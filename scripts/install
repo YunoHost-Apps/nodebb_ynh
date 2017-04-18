@@ -145,12 +145,10 @@ sudo sed -i "s@dbuser@$dbpass@g" $final_path/config.json
 script_dir="$PWD"
 pushd "$final_path"
 sudo npm install
-sudo npm install -g bower
 sudo chown -R $app: $final_path
-sudo node app --setup <<< \
-     "$admin_user; 
-     $admin_pass;"
-sudo su $app -c "cd $final_path && bower install -F"
+sudo ./nodebb setup <<< \
+     "$admin_user 
+      $admin_pass"
 popd
 
 #=================================================
