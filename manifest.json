@@ -6,12 +6,12 @@
         "en": "Nodejs Forum",
         "fr": "Forum écrit en nodejs"
     },
-    "url": "https://cryptpad.fr/",
+    "url": "https://nodebb.org/",
     "license": "GPLv3",
     "maintainer": {
         "name": "frju365",
         "email": "win10@tutanota.com",
-        "url": "https://github.com/frju365/cryptpad_ynh"
+        "url": "https://github.com/frju365/nodebb_ynh"
     },
     "requirements": {
         "yunohost": ">> 2.4.0"
