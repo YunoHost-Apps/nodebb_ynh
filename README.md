@@ -1,3 +1,3 @@
-# cryptpad_ynh
+# NodeBB
 
 NON FONCTIONNEL POUR L'INSTANT !
