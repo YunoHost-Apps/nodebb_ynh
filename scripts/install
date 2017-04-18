@@ -31,9 +31,11 @@ ynh_abort_if_errors	# Active trap pour arrêter le script si une erreur est dét
 domain=$YNH_APP_ARG_DOMAIN
 is_public=$YNH_APP_ARG_IS_PUBLIC
 path_url="" # Assure la compatibilité avec les fonctions utilisant $path_url
-
+admin_name=$YNH_APP_ARG_ADMIN_NAME
+admin_pass=$YNH_APP_ARG_ADMIN_PASS
+admin_email=$YNH_APP_ARG_ADMIN_EMAIL
 app=$YNH_APP_INSTANCE_NAME
-
+secret=$(ynh_string_random)
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THIS ARGS
 #=================================================
@@ -55,6 +57,10 @@ CHECK_FINALPATH	# Vérifie que le dossier de destination n'est pas déjà utilis
 
 ynh_app_setting_set $app domain $domain
 ynh_app_setting_set $app is_public $is_public
+ynh_app_setting_set "$app" admin_pass "$admin_pass"
+ynh_app_setting_set "$app" admin_name "$admin_name"
+ynh_app_setting_set "$app" admin_email "$admin_email"
+ynh_app_setting_set "$app" secret "$secret"
 
 #=================================================
 # STANDARD MODIFICATIONS
@@ -147,7 +153,8 @@ pushd "$final_path"
 sudo npm install
 sudo chown -R $app: $final_path
 sudo ./nodebb setup <<< \
-     "$admin_user 
+     "$admin_name
+      $admin_email 
       $admin_pass"
 popd
 
