@@ -4,6 +4,9 @@
 		domain="domain.tld"	(DOMAIN)
 		path="/path"	(PATH)
 		is_public="Yes"	(PUBLIC|public=0|private=1)
+		admin_name="john"   (USER)
+		admin_pass="05438966455822800mp"    (PASSWORD)
+		admin_email="abc@example.com"
 	; Checks
 		pkg_linter=1
 		setup_sub_dir=0
