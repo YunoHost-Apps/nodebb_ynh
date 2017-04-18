@@ -62,7 +62,7 @@ ynh_app_setting_set $app is_public $is_public
 # FIND AND OPEN A PORT
 #=================================================
 
-port=$(ynh_find_port 3000)	# Cherche un port libre.
+port=$(ynh_find_port 4567)	# Cherche un port libre.
 ynh_app_setting_set $app port $port
 
 #=================================================
@@ -70,7 +70,7 @@ ynh_app_setting_set $app port $port
 #=================================================
 
 sudo curl -sL https://deb.nodesource.com/setup_7.x | sudo bash -
-sudo apt-get install -yy -qq nodejs
+sudo apt-get install -yy -qq nodejs mongodb
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -84,16 +84,15 @@ SETUP_SOURCE	# Télécharge la source, décompresse et copie dans $final_path
 # CREATE A SQL BDD
 #=================================================
 
-#pushd $final_path
-# Setting up the database
-#dbname=$app
-#dbuser=$app
-
-# Generate random password
-#dbpass=$(ynh_string_random)
-##### dbpass
-#ynh_psql_create_db "$dbname" "$dbuser" "$dbpass"
-#popd
+pushd $final_path
+dbname=$app
+dbuser=$app
+dbpass=$(ynh_string_random)
+sudo mongo <<< \
+   "use $dbname;
+   db.createUser( { user: "$dbuser", pwd: "$dbpass", roles: [ "readWrite" ] } );
+   db.grantRolesToUser("$dbuser",[{ role: "clusterMonitor", db: "admin" }]);"
+popd
 
 #=================================================
 # NGINX CONFIGURATION
@@ -128,6 +127,18 @@ sudo chown admin -R $install_log
 ynh_use_logrotate
 
 #=================================================
+# CONFIGURE SERVER.JS	
+#=================================================
+
+sudo mv ../conf/config.json $final_path/config.json
+sudo sed -i "s@__URL__@$path_url@g" $final_path/config.json
+sudo sed -i "s@__PORT__@$port@g" $final_path/config.json
+sudo sed -i "s@__SECRET__@$secret@g" $final_path/config.json
+sudo sed -i "s@dbuser@$dbuser@g" $final_path/config.json
+sudo sed -i "s@dbname@$dbname@g" $final_path/config.json
+sudo sed -i "s@dbuser@$dbpass@g" $final_path/config.json
+
+#=================================================
 # INSTALL ETHERPAD
 #=================================================
 
@@ -136,16 +147,11 @@ pushd "$final_path"
 sudo npm install
 sudo npm install -g bower
 sudo chown -R $app: $final_path
-sudo su $app -c "cd $final_path && bower install chainpad#^0.4.0 -f && bower install -F"
+sudo node app --setup <<< \
+     "$admin_user; 
+     $admin_pass;"
+sudo su $app -c "cd $final_path && bower install -F"
 popd
-
-#=================================================
-# CONFIGURE SERVER.JS	
-#=================================================
-
-sudo mv ../conf/config.js $final_path/config.js
-sudo sed -i "s@__URL__@$path_url@g" $final_path/config.js
-sudo sed -i "s@__PORT__@$port@g" $final_path/config.js
 
 #=================================================
 # INSTALL MODULES FOR CRYPTPAD
@@ -153,16 +159,6 @@ sudo sed -i "s@__PORT__@$port@g" $final_path/config.js
 
 #npm install cryptpad-level-store;
 
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-
-sudo cp ../conf/cryptpad.service /etc/systemd/system/$app.service
-sudo chown root: /etc/systemd/system/$app.service
-sudo sed -i "s@__DIRECTORY__@$final_path/@g" /etc/systemd/system/$app.service
-sudo sed -i "s@__APP__@$app@g" /etc/systemd/system/$app.service
-## Démarrage auto du service
-sudo systemctl enable $app
 
 #=================================================
 # ENABLE SERVICE IN ADMIN PANEL
@@ -175,7 +171,10 @@ sudo yunohost service add $app --log "/var/log/$app/cryptpad.log"
 # START ETHERPAD IN BACKGROUND
 #=================================================
 
-sudo systemctl start $app	# Démarre etherpad. Le démarrage est fait le plus tôt possible, car il est très long...
+
+pushd $final_path
+./nodebb start  # Démarre etherpad. Le démarrage est fait le plus tôt possible, car il est très long...
+popd	
 
 #=================================================
 # SETUP SSOWAT
