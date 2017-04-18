@@ -1,0 +1,12 @@
+{
+    "url": "http://__URL__:__PORT__",
+    "secret": "__SECRET__",
+    "database": "mongo",
+    "mongo": {
+        "host": "127.0.0.1",
+        "port": "27017",
+        "username": "dbuser",
+        "password": "dbpass",
+        "database": "dbname"
+    }
+}
