@@ -95,9 +95,9 @@ dbname=$app
 dbuser=$app
 dbpass=$(ynh_string_random)
 sudo mongo <<< \
-   "use $dbname;
-   db.createUser( { user: "$dbuser", pwd: "$dbpass", roles: [ "readWrite" ] } );
-   db.grantRolesToUser("$dbuser",[{ role: "clusterMonitor", db: "admin" }]);"
+   "use $dbname;"
+   <<< "db.createUser( { user: "$dbuser", pwd: "$dbpass", roles: [ "readWrite" ] } );"
+   <<< "db.grantRolesToUser("$dbuser",[{ role: "clusterMonitor", db: "admin" }]);"
 popd
 
 #=================================================
