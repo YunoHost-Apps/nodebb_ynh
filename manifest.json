@@ -1,10 +1,10 @@
 {
-    "name": "CryptPad",
-    "id": "cryptpad",
+    "name": "NodeBB",
+    "id": "nodebb",
     "packaging_format": 1,
     "description": {
-        "en": "Encrypted Pad",
-	      "fr": "Créateur de pad crypté."
+        "en": "Nodejs Forum",
+        "fr": "Forum écrit en nodejs"
     },
     "url": "https://cryptpad.fr/",
     "license": "GPLv3",
@@ -49,6 +49,32 @@
                     "fr": "Est-ce un site publique ? "
                 },
                 "default": true
+            },
+            {
+                "name": "admin_name",
+                "type": "user",
+                "ask": {
+                    "en": "Choose the Abantecart administrator (must be an existing YunoHost user)",
+                    "fr": "Choisissez l'administrateur de Abantecart (doit être un utilisateur YunoHost existant)"
+                },
+                "example": "homer"
+            },
+            {
+                "name": "admin_pass",
+                "type": "password",
+                "ask": {
+                    "en": "Set the password for the Admin user ≥ 5 character",
+                    "fr": "Définissez le mot de passe pour l'Administrateur. ≥ cinq charactères"
+                },
+                "example": "myreallystrengthpassword"
+            },
+            {
+                "name": "admin_email",
+                "type": "email",
+                "ask": {
+                    "fr": "Votre adresse mail."
+                },
+                "exemple": "abc@efg.hi"
             }
         ]
     }
