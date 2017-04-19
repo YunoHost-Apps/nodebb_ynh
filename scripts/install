@@ -87,6 +87,16 @@ ynh_app_setting_set $app final_path $final_path
 SETUP_SOURCE	# Télécharge la source, décompresse et copie dans $final_path
 
 #=================================================
+# BEGINING OF THE INSTALLATION
+#=================================================
+
+script_dir="$PWD"
+pushd "$final_path"
+sudo npm install
+sudo npm install -g mongo
+popd
+
+#=================================================
 # CREATE A SQL BDD
 #=================================================
 
@@ -145,12 +155,10 @@ sudo sed -i "s@dbname@$dbname@g" $final_path/config.json
 sudo sed -i "s@dbuser@$dbpass@g" $final_path/config.json
 
 #=================================================
-# INSTALL ETHERPAD
+# CONFIGURE NODEBB
 #=================================================
 
-script_dir="$PWD"
 pushd "$final_path"
-sudo npm install
 sudo chown -R $app: $final_path
 sudo ./nodebb setup <<< \
      "$admin_name
