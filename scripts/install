@@ -150,7 +150,6 @@ ynh_use_logrotate
 #=================================================
 
 sudo mv ../conf/config.json $final_path/config.json
-sudo sed -i "s@__URL__@$path_url@g" $final_path/config.json
 sudo sed -i "s@__PORT__@$port@g" $final_path/config.json
 sudo sed -i "s@__SECRET__@$secret@g" $final_path/config.json
 sudo sed -i "s@dbuser@$dbuser@g" $final_path/config.json
