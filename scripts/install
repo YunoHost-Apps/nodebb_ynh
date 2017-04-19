@@ -190,7 +190,7 @@ sudo yunohost service add $app --log "/var/log/$app/cryptpad.log"
 
 
 pushd $final_path
-./nodebb start  # Démarre etherpad. Le démarrage est fait le plus tôt possible, car il est très long...
+sudo ./nodebb start  # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
 popd	
 
 #=================================================
