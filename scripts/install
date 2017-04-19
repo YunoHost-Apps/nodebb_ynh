@@ -182,7 +182,7 @@ popd
 #=================================================
 
 # Ajoute le service au monitoring de Yunohost.
-sudo yunohost service add $app --log "/var/log/$app/cryptpad.log"
+sudo yunohost service add $app --log "/var/log/$app/nodebb.log"
 
 #=================================================
 # START ETHERPAD IN BACKGROUND
