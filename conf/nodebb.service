@@ -5,10 +5,14 @@ After=system.slice multi-user.target
 
 [Service]
 Type=simple
-User=root
+User=nodebb
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodebb
 
 Environment=NODE_ENV=production
-WorkingDirectory=__PATH__
+WorkingDirectory=/var/www/nodebb
 ExecStart=/usr/bin/node loader.js --no-daemon --no-silent
 Restart=always
 
