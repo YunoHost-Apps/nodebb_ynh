@@ -109,8 +109,8 @@ pushd $final_path
 dbname=$app
 dbuser=$app
 dbpass=$(ynh_string_random)
-sudo mongo --shell "$dbname" --eval 'db.createUser( { user: "$dbuser", pwd: "$dbpass", roles: [ "readWrite" ] } );' <<< exit
-sudo mongo --shell "$dbname" --eval 'db.grantRolesToUser("$dbuser",[{ role: "clusterMonitor", db: "admin" }]);' <<< exit
+sudo mongo --shell "$dbname" --eval 'db.createUser( { user: "'${dbuser}'", pwd: "'${dbpass}'", roles: [ "readWrite" ] } );' <<< exit
+sudo mongo --shell "$dbname" --eval 'db.grantRolesToUser("'${dbuser}'",[{ role: "clusterMonitor", db: "admin" }]);' <<< exit
 popd
 
 #=================================================
