@@ -1,5 +1,5 @@
 {
-    "url": "http://localhost:__PORT__",
+    "url": "http://__URL__:__PORT__",
     "secret": "__SECRET__",
     "database": "mongo",
     "mongo": {
