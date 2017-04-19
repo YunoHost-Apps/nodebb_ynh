@@ -189,6 +189,7 @@ sudo yunohost service add $app --log "/var/log/$app/nodebb.log"
 #=================================================
 # START ETHERPAD IN BACKGROUND
 #=================================================
+sudo sed -i "s@__PATH__@$final_path@g" ../conf/nodebb.service
 id -g "$app" &>/dev/null || sudo addgroup "$app" --system --quiet
 id -u "$app" &>/dev/null || sudo adduser "$app" \
       --ingroup "$app" --system --quiet --shell /bin/bash
