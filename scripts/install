@@ -122,6 +122,7 @@ popd
 # Et copie le fichier de config nginx
 sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/$app.conf
 # Modifie les variables dans le fichier de configuration nginx
+sudo sed -i "s@__URL__@$domain@g" /etc/nginx/conf.d/$domain.d/$app.conf
 sudo sed -i "s@__PORT__@$port@g" /etc/nginx/conf.d/$domain.d/$app.conf
 
 #=================================================
@@ -152,6 +153,7 @@ ynh_use_logrotate
 #=================================================
 
 sudo mv ../conf/config.json $final_path/config.json
+sudo sed -i "s@__URL__@$domain@g" $final_path/config.json
 sudo sed -i "s@__PORT__@$port@g" $final_path/config.json
 sudo sed -i "s@__SECRET__@$secret@g" $final_path/config.json
 sudo sed -i "s@dbuser@$dbuser@g" $final_path/config.json
@@ -187,11 +189,13 @@ sudo yunohost service add $app --log "/var/log/$app/nodebb.log"
 #=================================================
 # START ETHERPAD IN BACKGROUND
 #=================================================
-
-
-pushd $final_path
-sudo ./nodebb start  # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
-popd	
+id -g "$app" &>/dev/null || sudo addgroup "$app" --system --quiet
+id -u "$app" &>/dev/null || sudo adduser "$app" \
+      --ingroup "$app" --system --quiet --shell /bin/bash
+sudo cp ../conf/"$app".service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable "$app".service
+sudo service $app start # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
 
 #=================================================
 # SETUP SSOWAT
