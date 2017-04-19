@@ -76,7 +76,7 @@ ynh_app_setting_set $app port $port
 #=================================================
 
 sudo curl -sL https://deb.nodesource.com/setup_7.x | sudo bash -
-sudo apt-get install -yy -qq nodejs mongodb
+sudo apt-get install -yy -qq nodejs mongodb mongo-tools
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
