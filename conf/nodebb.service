@@ -5,11 +5,7 @@ After=system.slice multi-user.target
 
 [Service]
 Type=simple
-User=nodebb
-
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=nodebb
+User=root
 
 Environment=NODE_ENV=production
 WorkingDirectory=__PATH__
