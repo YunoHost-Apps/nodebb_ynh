@@ -99,7 +99,7 @@ sudo chown www-data:www-data $final_path -R
 sudo service mongod start
 script_dir="$PWD"
 pushd "$final_path"
-sudo npm install
+sudo npm install --production
 sudo npm install -g mongo
 popd
 
@@ -129,7 +129,7 @@ sudo sed -i "s@__PORT__@$port@g" /etc/nginx/conf.d/$domain.d/$app.conf
 # CREATE DEDICATED USER
 #=================================================
 
-sudo useradd -N $app -d	$final_path # Créer un utilisateur système dédié à l'app
+sudo adduser --system --group nodebb
 
 #=================================================
 # SPECIFIC SETUP
@@ -172,6 +172,7 @@ sudo ./nodebb setup <<< \
       $admin_pass"
 popd
 
+sudo chown -R nodebb:nodebb $final_path
 #=================================================
 # INSTALL MODULES FOR CRYPTPAD
 #=================================================
@@ -196,7 +197,7 @@ id -u "$app" &>/dev/null || sudo adduser "$app" \
 sudo cp ../conf/"$app".service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable "$app".service
-sudo service $app start # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
+sudo systemctl start $app # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
 
 #=================================================
 # SETUP SSOWAT
