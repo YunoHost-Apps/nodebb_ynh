@@ -75,8 +75,12 @@ ynh_app_setting_set $app port $port
 # INSTALL DEPENDENCIES
 #=================================================
 
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+sudo apt-get update
+sudo apt-get install -yy -qq mongodb-org
 sudo curl -sL https://deb.nodesource.com/setup_7.x | sudo bash -
-sudo apt-get install -yy -qq nodejs mongodb mongo-tools
+sudo apt-get install -yy -qq nodejs
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -90,6 +94,7 @@ SETUP_SOURCE	# Télécharge la source, décompresse et copie dans $final_path
 # BEGINING OF THE INSTALLATION
 #=================================================
 
+sudo service mongod start
 script_dir="$PWD"
 pushd "$final_path"
 sudo npm install
