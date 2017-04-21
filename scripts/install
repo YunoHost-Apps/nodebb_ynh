@@ -163,6 +163,7 @@ sudo sed -i "s@dbpass@$dbpass@g" $final_path/config.json
 sudo sed -i "s@admin_email@$admin_email@g" $final_path/config.json
 sudo sed -i "s@admin_name@$admin_name@g" $final_path/config.json
 sudo sed -i "s@admin_pass@$admin_pass@g" $final_path/config.json
+sudo sed -i "s@admin_pass2@$admin_pass@g" $final_path/config.json
 
 #=================================================
 # CONFIGURE NODEBB

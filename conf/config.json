@@ -13,6 +13,6 @@
         "email": "admin_email",
         "username": "admin_name",
         "password": "admin_pass",
-        "password:confirm": "admin_pass"
+        "password:confirm": "admin_pass2"
    }
 }
