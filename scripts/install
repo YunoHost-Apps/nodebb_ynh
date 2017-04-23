@@ -199,7 +199,7 @@ sudo cp ../conf/"$app".service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable "$app".service
 sudo systemctl start $app # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
-
+sleep 10
 #=================================================
 # SETUP SSOWAT
 #=================================================
