@@ -174,11 +174,6 @@ sudo ./nodebb setup <<< \
 popd
 
 sudo chown -R nodebb:nodebb $final_path
-#=================================================
-# INSTALL MODULES FOR CRYPTPAD
-#=================================================
-
-#npm install cryptpad-level-store;
 
 
 #=================================================
@@ -198,6 +193,7 @@ id -u "$app" &>/dev/null || sudo adduser "$app" \
 sudo cp ../conf/"$app".service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable "$app".service
+sleep 10
 sudo systemctl start $app # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
 sleep 10
 #=================================================
@@ -212,5 +208,5 @@ fi
 #=================================================
 # RELOAD NGINX
 #=================================================
-sudo nginx -t
+sleep 10
 sudo systemctl reload nginx
