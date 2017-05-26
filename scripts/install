@@ -164,9 +164,7 @@ sudo sed -i "s@dbpass@$dbpass@g" $final_path/config.json
 pushd "$final_path"
 sudo chown -R $app: $final_path
 sudo ./nodebb setup <<< \
-     "$admin_name
-      $admin_email 
-      $admin_pass"
+     "$admin_name"
 popd
 
 sudo chown -R nodebb:nodebb $final_path
