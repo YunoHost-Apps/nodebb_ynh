@@ -58,23 +58,6 @@
                     "fr": "Choisissez l'administrateur de Abantecart (doit être un utilisateur YunoHost existant)"
                 },
                 "example": "homer"
-            },
-            {
-                "name": "admin_pass",
-                "type": "password",
-                "ask": {
-                    "en": "Set the password for the Admin user ≥ 5 character",
-                    "fr": "Définissez le mot de passe pour l'Administrateur. ≥ cinq charactères"
-                },
-                "example": "myreallystrengthpassword"
-            },
-            {
-                "name": "admin_email",
-                "type": "email",
-                "ask": {
-                    "fr": "Votre adresse mail."
-                },
-                "exemple": "abc@efg.hi"
             }
         ]
     }
