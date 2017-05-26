@@ -195,11 +195,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable "$app".service
 
 WARNING echo "Démarrage de NodeBB"
-tempfile="$(mktemp)"
-tail -f -n1 /var/log/$app/nodebb.log > "$tempfile" &	# Suit le démarrage dans le log
-PID_TAIL=$!	# Récupère le PID de la commande tail, qui est passée en arrière plan.	
 sudo systemctl start $app # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
-
+sleep 10
 #=================================================
 # SETUP SSOWAT
 #=================================================
@@ -213,6 +210,3 @@ fi
 # RELOAD NGINX
 #=================================================
 sudo systemctl reload nginx
-
-SUPPRESS_WARNING kill -s 15 $PID_TAIL	# Arrête l'exécution de tail.
-ynh_secure_remove "$tempfile"
