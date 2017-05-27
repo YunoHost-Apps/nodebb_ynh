@@ -65,7 +65,7 @@ ynh_app_setting_set "$app" secret "$secret"
 # FIND AND OPEN A PORT
 #=================================================
 
-port=$(ynh_find_port 4567)	# Cherche un port libre.
+port=$(ynh_find_port 4562)	# Cherche un port libre.
 ynh_app_setting_set $app port $port
 
 #=================================================
