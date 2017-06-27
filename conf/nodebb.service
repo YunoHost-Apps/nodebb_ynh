@@ -1,6 +1,6 @@
 [Unit]
 Description=NodeBB forum for Node.js.
-Documentation=http://nodebb.readthedocs.io/en/latest/
+Documentation=https://docs.nodebb.org
 After=system.slice multi-user.target
 
 [Service]
@@ -13,8 +13,7 @@ SyslogIdentifier=nodebb
 
 Environment=NODE_ENV=production
 WorkingDirectory=/var/www/nodebb
-ExecStart=./nodebb start
-ExecStop=./nodebb stop
+ExecStart=/var/www/nodebb/nodebb --no-silent --no-daemon
 Restart=always
 
 [Install]

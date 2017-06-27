@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 #=================================================
 # GENERIC STARTING
 #=================================================
@@ -8,7 +10,6 @@
 
 source .fonctions
 source /usr/share/yunohost/helpers
-set -eu
 
 #=================================================
 # MANAGE FAILURE OF THE SCRIPT
