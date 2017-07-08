@@ -124,8 +124,9 @@ sudo chown www-data:www-data $final_path -R
 sudo service mongod start
 script_dir="$PWD"
 pushd "$final_path"
-sudo npm install --production
-sudo npm install -g mongo
+ynh_use_nodejs
+sudo_path npm install --production >> $install_log 2>&1
+sudo_path npm install -g mongo
 popd
 
 sudo yunohost firewall allow Both $port
@@ -172,9 +173,7 @@ sudo sed -i "s@dbpass@$dbpass@g" $final_path/config.json
 #=================================================
 
 pushd $final_path
-ynh_use_nodejs
 sudo chown -R $app: $final_path
-sudo_path npm install --production >> $install_log 2>&1
 sudo_path ./nodebb setup <<< \
      "$admin_name"
 popd
