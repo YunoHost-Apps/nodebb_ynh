@@ -96,6 +96,7 @@ ynh_remove_systemd_config () {
 	fi
 }
 
+
 SETUP_SOURCE () {	# Télécharge la source, décompresse et copie dans $final_path
 	src_url=$(cat ../conf/app.src | grep SOURCE_URL | cut -d'>' -f2)
 	src_checksum=$(cat ../conf/app.src | grep SOURCE_SUM | cut -d= -f2)
