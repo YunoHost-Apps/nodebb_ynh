@@ -226,17 +226,12 @@ sudo systemctl reload nginx
 
 for i in `seq 1 120`
 do	# La boucle attend le démarrage d'etherpad. Ou 2 minutes. Cette boucle évite simplement un 502 au début, car le démarrage est long...
-	if grep -q "You can access your $app instance at" "$tempfile" then
-		# Si le log annonce une première fois le démarrage d'etherpad, applique la langue de mypads et redémarre le service.
-		WARNING echo "Le service $app a démarré correctement."
-		sudo systemctl restart $app
-		cat /dev/null > "$tempfile"	# Purge le log de suivi du démarrage.
-		i=1
-	fi
-	if grep -q "You can access your $app instance at" "$tempfile" then
-		WARNING echo "Le service $app a démarré correctement."
-		break	# Si le log annonce une deuxième fois le démarrage d'etherpad, sort de la boucle.
-	fi
+	# Si le log annonce une première fois le démarrage d'etherpad, applique la langue de mypads et redémarre le service.
+	WARNING echo "Le service $app a démarré correctement."
+	sudo systemctl restart $app
+	cat /dev/null > "$tempfile"	# Purge le log de suivi du démarrage.
+	i=1
+
 	WARNING echo -n "."
 	sleep 1
 done
