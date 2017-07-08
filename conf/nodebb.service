@@ -1,19 +1,16 @@
 [Unit]
 Description=NodeBB forum for Node.js.
-Documentation=https://docs.nodebb.org
-After=system.slice multi-user.target
+After=network.target
+
 
 [Service]
 Type=simple
-User=root
-
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=nodebb
-
-Environment=NODE_ENV=production
-WorkingDirectory=/var/www/nodebb
-ExecStart=/var/www/nodebb/nodebb --no-silent --no-daemon
+User=__APP__
+Group=__APP__
+WorkingDirectory=__FINALPATH__
+ExecStartPre=__NODEJS__
+Environment="PATH=__ENV_PATH__"
+ExecStart=__NODE__ loader.js --no-daemon --no-silent
 Restart=always
 
 [Install]
