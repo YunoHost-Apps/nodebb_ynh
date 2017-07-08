@@ -225,8 +225,7 @@ sudo systemctl reload nginx
 #=================================================
 
 for i in `seq 1 120`
-do	# La boucle attend le démarrage d'etherpad. Ou 2 minutes. Cette boucle évite simplement un 502 au début, car le démarrage est long...
-	# Si le log annonce une première fois le démarrage d'etherpad, applique la langue de mypads et redémarre le service.
+do	
 	WARNING echo "Le service $app a démarré correctement."
 	cat /dev/null > "$tempfile"	# Purge le log de suivi du démarrage.
 	i=1
