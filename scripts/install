@@ -66,7 +66,7 @@ ynh_app_setting_set "$app" secret "$secret"
 # FIND AND OPEN A PORT
 #=================================================
 
-port=$(ynh_find_port 4562)	# Cherche un port libre.
+port=$(ynh_find_port 4567)	# Cherche un port libre.
 ynh_app_setting_set $app port $port
 
 #=================================================
@@ -77,8 +77,35 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A1
 echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 sudo apt-get update
 sudo apt-get install -yy -qq mongodb-org
-sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
-sudo apt-get install -yy -qq nodejs
+
+#=================================================
+# INSTALL NODEJS
+#=================================================
+version=6.2.0
+ynh_install_nodejs 6.2.0
+
+#=================================================
+# CREATE DEDICATED USER
+#=================================================
+
+ynh_system_user_create $app /home/$app	# Créer un utilisateur système dédié à l'app
+
+#=================================================
+# SPECIFIC SETUP
+#=================================================
+# HANDLE LOG FILES AND LOGROTATE
+#=================================================
+
+# Créer le dossier de log
+sudo mkdir -p /var/log/$app
+sudo touch /var/log/$app/nodebb.log
+install_log=/var/log/$app/installation.log
+sudo touch $install_log
+sudo chown $app -R /var/log/$app
+sudo chown admin -R $install_log
+
+# Configuration de logrotate
+ynh_use_logrotate
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -114,37 +141,17 @@ sudo mongo --shell "$dbname" --eval 'db.grantRolesToUser("'${dbuser}'",[{ role: 
 popd
 
 #=================================================
-# NGINX CONFIGURATION
+# Modify Nginx configuration file and copy it to Nginx conf directory
 #=================================================
 
-# Et copie le fichier de config nginx
-sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/$app.conf
-# Modifie les variables dans le fichier de configuration nginx
-sudo sed -i "s@__URL__@$domain@g" /etc/nginx/conf.d/$domain.d/$app.conf
-sudo sed -i "s@__PORT__@$port@g" /etc/nginx/conf.d/$domain.d/$app.conf
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-
-sudo adduser --system --group nodebb
-
-#=================================================
-# SPECIFIC SETUP
-#=================================================
-# HANDLE LOG FILES AND LOGROTATE
-#=================================================
-
-# Créer le dossier de log
-sudo mkdir -p /var/log/$app
-sudo touch /var/log/$app/nodebb.log
-install_log=/var/log/$app/installation.log
-sudo touch $install_log
-sudo chown $app -R /var/log/$app
-sudo chown admin -R $install_log
-
-# Configuration de logrotate
-ynh_use_logrotate
+ynh_nginx_config
+nginxconf=/etc/nginx/conf.d/$domain.d/$app.conf
+sudo chown root: $nginxconf
+sudo chmod 600 $nginxconf
+ynh_systemd_config
+ynh_replace_string "__NODEJS__" "$nodejs_use_version" "/etc/systemd/system/$app.service"
+ynh_replace_string "__ENV_PATH__" "$PATH" "/etc/systemd/system/$app.service"
+ynh_replace_string "__NODE__" "$nodejs_path" "/etc/systemd/system/$app.service"
 
 #=================================================
 # CONFIGURE SERVER.JS	
@@ -170,6 +177,14 @@ popd
 
 sudo chown -R nodebb:nodebb $final_path
 
+#=================================================
+# START NodeBB IN BACKGROUND
+#=================================================
+
+cat /etc/systemd/system/$app.service
+sudo systemctl daemon-reload
+sudo systemctl enable "$app".service
+sudo systemctl start $app     # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
 
 #=================================================
 # ENABLE SERVICE IN ADMIN PANEL
@@ -178,19 +193,6 @@ sudo chown -R nodebb:nodebb $final_path
 # Ajoute le service au monitoring de Yunohost.
 sudo yunohost service add $app --log "/var/log/$app/nodebb.log"
 
-#=================================================
-# START ETHERPAD IN BACKGROUND
-#=================================================
-sudo sed -i "s@__PATH__@$final_path@g" ../conf/nodebb.service
-id -g "$app" &>/dev/null || sudo addgroup "$app" --system --quiet
-id -u "$app" &>/dev/null || sudo adduser "$app" \
-      --ingroup "$app" --system --quiet --shell /bin/bash
-sudo cp ../conf/"$app".service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable "$app".service
-
-sudo systemctl start $app # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
-sleep 10
 #=================================================
 # SETUP SSOWAT
 #=================================================
@@ -203,4 +205,6 @@ fi
 #=================================================
 # RELOAD NGINX
 #=================================================
+
+sleep 10
 sudo systemctl reload nginx
