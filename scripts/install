@@ -171,9 +171,11 @@ sudo sed -i "s@dbpass@$dbpass@g" $final_path/config.json
 # CONFIGURE NODEBB
 #=================================================
 
-pushd "$final_path"
+pushd $final_path
+ynh_use_nodejs
 sudo chown -R $app: $final_path
-sudo ./nodebb setup <<< \
+sudo_path npm install --production >> $install_log 2>&1
+sudo_path ./nodebb setup <<< \
      "$admin_name"
 popd
 
