@@ -96,6 +96,23 @@ ynh_remove_systemd_config () {
 	fi
 }
 
+
+SETUP_SOURCE () {	# Télécharge la source, décompresse et copie dans $final_path
+	src_url=$(cat ../conf/app.src | grep SOURCE_URL | cut -d'>' -f2)
+	src_checksum=$(cat ../conf/app.src | grep SOURCE_SUM | cut -d= -f2)
+	# Download sources from the upstream
+	wget -nv -O source.tar.gz $src_url
+	# Vérifie la somme de contrôle de la source téléchargée.
+	echo "$src_checksum source.tar.gz" | md5sum -c --status || ynh_die "Corrupt source"
+	# Extract source into the app dir
+	sudo mkdir -p $final_path
+	sudo tar -x -f source.tar.gz -C $final_path --strip-components 1
+	# Copie les fichiers additionnels ou modifiés.
+	if test -e "../sources/ajouts"; then
+		sudo cp -a ../sources/ajouts/. "$final_path"
+	fi
+}
+
 #=================================================
 #=================================================
 
