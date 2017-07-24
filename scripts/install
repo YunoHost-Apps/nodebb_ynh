@@ -81,8 +81,8 @@ sudo apt-get install -yy -qq mongodb-org
 #=================================================
 # INSTALL NODEJS
 #=================================================
-version=6.2.0
-ynh_install_nodejs 6.2.0
+version=8.0.0
+ynh_install_nodejs 8.0.0
 
 #=================================================
 # CREATE DEDICATED USER
