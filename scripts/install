@@ -115,7 +115,7 @@ final_path=/var/www/$app
 ynh_app_setting_set $app final_path $final_path
 SETUP_SOURCE	# Télécharge la source, décompresse et copie dans $final_path
 sudo chmod 755 $final_path -R
-sudo chown www-data:www-data $final_path -R
+sudo chown $app: $final_path -R
 
 #=================================================
 # BEGINING OF THE INSTALLATION
