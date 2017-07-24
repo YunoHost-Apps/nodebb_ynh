@@ -91,6 +91,12 @@ ynh_install_nodejs 8.0.0
 ynh_system_user_create $app /home/$app	# Créer un utilisateur système dédié à l'app
 
 #=================================================
+# NODEJS Version
+#=================================================
+
+ynh_use_nodejs
+
+#=================================================
 # SPECIFIC SETUP
 #=================================================
 # HANDLE LOG FILES AND LOGROTATE
@@ -224,15 +230,5 @@ sudo systemctl reload nginx
 # CHECK ETHERPAD STARTING
 #=================================================
 
-for i in `seq 1 120`
-do	
-	WARNING echo "Le service $app a démarré correctement."
-	cat /dev/null > "$tempfile"	# Purge le log de suivi du démarrage.
-	i=1
-
-	WARNING echo -n "."
-	sleep 1
-	break
-done
 SUPPRESS_WARNING kill -s 15 $PID_TAIL	# Arrête l'exécution de tail.
 ynh_secure_remove "$tempfile"
