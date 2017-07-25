@@ -2,6 +2,7 @@
     "url": "https://__URL__",
     "secret": "__SECRET__",
     "database": "mongo",
+    "port": "__PORT__",
     "mongo": {
         "host": "127.0.0.1",
         "port": "27017",
