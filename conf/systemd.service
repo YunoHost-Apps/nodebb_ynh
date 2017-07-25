@@ -1,16 +1,16 @@
 [Unit]
 Description=NodeBB forum for Node.js.
+After=syslog.target
 After=network.target
-
 
 [Service]
 Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
-ExecStartPre=n 8.0.0
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/node_n/bin"
-ExecStart=/opt/node_n/bin/node app.js start
+ExecStartPre=__NODEJS__
+Environment="PATH=__ENV_PATH__"
+ExecStart=__NODE__ app.js start
 Restart=always
 
 [Install]
