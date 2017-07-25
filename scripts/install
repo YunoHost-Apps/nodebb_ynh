@@ -221,4 +221,5 @@ fi
 #=================================================
 
 sudo systemctl reload nginx
+cat $final_path/config.json
 sudo systemctl status nodebb
