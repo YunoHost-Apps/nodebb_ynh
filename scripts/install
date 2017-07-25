@@ -132,7 +132,7 @@ script_dir="$PWD"
 pushd "$final_path"
 ynh_use_nodejs
 sudo_path npm install --production >> $install_log 2>&1
-sudo_path npm install -g mongo
+sudo_path npm install mongo
 popd
 
 sudo yunohost firewall allow Both $port
