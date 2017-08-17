@@ -182,6 +182,7 @@ pushd $final_path
 sudo chown -R $app: $final_path
 sudo_path ./nodebb setup <<< \
      "$admin_name"
+sudo_path ./nodebb build
 popd
 
 sudo chown -R nodebb:nodebb $final_path
