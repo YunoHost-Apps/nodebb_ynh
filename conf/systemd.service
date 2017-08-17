@@ -10,7 +10,7 @@ Group=__APP__
 WorkingDirectory=__FINALPATH__
 ExecStartPre=__NODEJS__
 Environment="PATH=__ENV_PATH__"
-ExecStart=__NODE__ app.js start
+ExecStart=__NODE__ loader.js --no-daemon --no-silent
 Restart=always
 
 [Install]
