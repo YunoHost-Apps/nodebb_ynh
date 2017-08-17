@@ -1,6 +1,5 @@
 [Unit]
 Description=NodeBB forum for Node.js.
-After=syslog.target
 After=network.target
 
 [Service]
