@@ -36,20 +36,21 @@ path_url="" # Assure la compatibilité avec les fonctions utilisant $path_url
 admin_name=$YNH_APP_ARG_ADMIN_NAME
 app=$YNH_APP_INSTANCE_NAME
 secret=$(ynh_string_random)
+
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THIS ARGS
 #=================================================
 
-if sudo yunohost domain list | grep -q $domain	# Vérifie la liste des domaines
-then	# Si le domaine existe dans Yunohost
-	if sudo yunohost app map | grep -q $domain	# Vérifie la liste des apps par domaine
-	then 	# Si une app est installée sur ce domaine.
-		WARNING echo "An app is already installed on the domain $domain. Mypads needs a whole domain or subdomain to himself."
-	fi
-fi
+final_path=/var/www/$app
+test ! -e "$final_path" || ynh_die "This path already contains a folder"
 
-CHECK_DOMAINPATH	# Vérifie la disponibilité du path et du domaine.
-CHECK_FINALPATH	# Vérifie que le dossier de destination n'est pas déjà utilisé.
+# Normalize the url path syntax
+path_url=$(ynh_normalize_url_path $path_url)
+
+# Check web path availability
+ynh_webpath_available $domain $path_url
+# Register (book) web path
+ynh_webpath_register $app $domain $path_url
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
@@ -118,7 +119,7 @@ ynh_use_logrotate
 
 final_path=/var/www/$app
 ynh_app_setting_set $app final_path $final_path
-SETUP_SOURCE	# Télécharge la source, décompresse et copie dans $final_path
+ynh_setup_source "$final_path"	# Télécharge la source, décompresse et copie dans $final_path
 sudo chmod 755 $final_path -R
 sudo chown $app: $final_path -R
 
@@ -156,10 +157,13 @@ ynh_nginx_config
 nginxconf=/etc/nginx/conf.d/$domain.d/$app.conf
 sudo chown root: $nginxconf
 sudo chmod 600 $nginxconf
+cat $nginxconf
+
 ynh_systemd_config
 ynh_replace_string "__NODEJS__" "$nodejs_use_version" "/etc/systemd/system/$app.service"
 ynh_replace_string "__ENV_PATH__" "$PATH" "/etc/systemd/system/$app.service"
 ynh_replace_string "__NODE__" "$nodejs_path" "/etc/systemd/system/$app.service"
+cat /etc/systemd/system/$app.service
 
 #=================================================
 # CONFIGURE SERVER.JS	
@@ -172,6 +176,7 @@ sudo sed -i "s@__SECRET__@$secret@g" $final_path/config.json
 sudo sed -i "s@dbuser@$dbuser@g" $final_path/config.json
 sudo sed -i "s@dbname@$dbname@g" $final_path/config.json
 sudo sed -i "s@dbpass@$dbpass@g" $final_path/config.json
+cat $final_path/config.json
 
 #=================================================
 # CONFIGURE NODEBB
@@ -179,9 +184,9 @@ sudo sed -i "s@dbpass@$dbpass@g" $final_path/config.json
 
 pushd $final_path
 sudo chown -R $app: $final_path
-sudo_path ./nodebb setup <<< \
+./nodebb setup <<< \
      "$admin_name"
-sudo_path ./nodebb build
+./nodebb build
 popd
 
 sudo chown -R nodebb:nodebb $final_path
@@ -204,7 +209,6 @@ sudo systemctl start $app     # Démarre Nodebb. Le démarrage est fait le plus 
 # ENABLE SERVICE IN ADMIN PANEL
 #=================================================
 
-# Ajoute le service au monitoring de Yunohost.
 sudo yunohost service add $app --log "/var/log/$app/nodebb.log"
 
 #=================================================
