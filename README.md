@@ -5,7 +5,7 @@ TEST UNIQUEMENT (pour l'instant)/TEST ONLY (for the moment)
 - Website of the Yuno-package : https://github.com/YunoHost-Apps/nodebb_ynh
 - Official website : https://nodebb.org
 - Github website : https://github.com/NodeBB/NodeBB/
-- Documentation : [FR]https://docs.nodebb.org/fr/latest/ , [EN]https://docs.nodebb.org/en/latest/
+- Documentation : [EN]https://docs.nodebb.org/
 
 - A problem/ Un problème : parlez directement(chat) aux développeurs sur https://gitter.im/nodebb/nodebb
 
