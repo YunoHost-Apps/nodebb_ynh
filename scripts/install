@@ -74,16 +74,15 @@ ynh_app_setting_set $app port $port
 #=================================================
 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 sudo apt-get update
 sudo apt-get install -yy -qq mongodb-org
 
 #=================================================
 # INSTALL NODEJS
 #=================================================
-version=8.0.0
-ynh_install_nodejs 8.0.0
-
+version=8.9.3
+ynh_install_nodejs $version
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
@@ -131,8 +130,8 @@ sudo service mongod start
 script_dir="$PWD"
 pushd "$final_path"
 ynh_use_nodejs
-sudo_path npm install --production >> $install_log 2>&1
-sudo_path npm install mongo
+npm install --production >> $install_log 2>&1
+npm install mongo
 popd
 
 sudo yunohost firewall allow Both $port
