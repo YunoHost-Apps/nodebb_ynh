@@ -79,7 +79,7 @@ sudo apt-get install -yy -qq mongodb-org
 #=================================================
 # INSTALL NODEJS
 #=================================================
-version=8.9.3
+version=9.3.0
 ynh_install_nodejs $version
 #=================================================
 # CREATE DEDICATED USER
