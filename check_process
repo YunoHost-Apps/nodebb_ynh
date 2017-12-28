@@ -4,7 +4,7 @@
 		domain="domain.tld"	(DOMAIN)
 		path="/path"	(PATH)
 		is_public="1" (PUBLIC|public=1|private=0)
-		admin_name="john"   (USER)
+		admin_user="john"   (USER)
 		admin_pass="05438966455822800mp"    (PASSWORD)
 		admin_mail="abc@example.com"
 	; Checks
