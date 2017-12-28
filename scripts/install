@@ -212,7 +212,7 @@ yunohost service add $app --log "/var/log/$app/nodebb.log"
 
 if [ $is_public -eq 1 ];
 then
-  ynh_app_setting_set "$app" unprotected_uris "/"
+  ynh_app_setting_set $app skipped_uris "/"
 fi
 
 #=================================================
