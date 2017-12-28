@@ -54,8 +54,26 @@
                 "name": "admin_name",
                 "type": "user",
                 "ask": {
-                    "en": "Choose the Abantecart administrator (must be an existing YunoHost user)",
-                    "fr": "Choisissez l'administrateur de Abantecart (doit être un utilisateur YunoHost existant)"
+                    "en": "Choose the Nodebb administrator (must be an existing YunoHost user)",
+                    "fr": "Choisissez l'administrateur de Nodebb (doit être un utilisateur YunoHost existant)"
+                },
+                "example": "homer"
+            },
+            {
+                "name": "admin_mail",
+                "type": "email",
+                "ask": {
+                    "en": "Choose the Nodebb administrator email (must be an existing YunoHost user)",
+                    "fr": "Choisissez l'adresse mail de l'administrateur de Nodebb (doit être un utilisateur YunoHost existant)"
+                },
+                "example": "test@example.tld"
+            },
+            {
+                "name": "admin_pass",
+                "type": "password",
+                "ask": {
+                    "en": "Choose the Nodebb administrator password (must be an existing YunoHost user)",
+                    "fr": "Choisissez le mot de passe de l'administrateur de Nodebb (doit être un utilisateur YunoHost existant)"
                 },
                 "example": "homer"
             }
