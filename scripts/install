@@ -33,7 +33,9 @@ ynh_abort_if_errors	# Active trap pour arrêter le script si une erreur est dét
 domain=$YNH_APP_ARG_DOMAIN
 is_public=$YNH_APP_ARG_IS_PUBLIC
 path_url="" # Assure la compatibilité avec les fonctions utilisant $path_url
-admin_name=$YNH_APP_ARG_ADMIN_NAME
+admin_user=$YNH_APP_ARG_ADMIN_NAME
+admin_mail=$YNH_APP_ARG_ADMIN_MAIL
+admin_pass=$YNH_APP_ARG_ADMIN_PASS
 app=$YNH_APP_INSTANCE_NAME
 secret=$(ynh_string_random)
 
@@ -179,11 +181,10 @@ cat $final_path/config.json
 #=================================================
 
 pushd $final_path
-./nodebb setup <<< \
-     "$admin_name"
+
 ./nodebb build
 popd
-
+node app --setup=\"{\\\"url\\\":\\\"http://127.0.0.1:4567\\\",\\\"secret\\\":\\\"$secret\\\",\\\"database\\\":\\\"mongo\\\",\\\"mongo:host\\\":\\\"127.0.0.1\\\",\\\"mongo:port\\\":27017,\\\"mongo:username\\\":\\\"$dbuser\\\",\\\"mongo:password\\\":\\\"$dbpass\\\",\\\"mongo:database\\\":0,\\\"admin:username\\\":\\\"$admin_user\\\",\\\"admin:email\\\":\\\"$admin_mail\\\",\\\"admin:password\\\":\\\"$admin_pass\\\",\\\"admin:password:confirm\\\":\\\"$admin_pass\\\"}\"
 chown -R $app:$app $final_path
 
 #=================================================
