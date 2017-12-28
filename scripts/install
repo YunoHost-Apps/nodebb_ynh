@@ -180,10 +180,11 @@ cat $final_path/config.json
 #=================================================
 
 pushd $final_path
-sudo chown -R $app: $final_path
-./nodebb setup <<< \
+sudo chown -R $app:$app $final_path
+sudo chmod 775 $final_path -R
+sudo ./nodebb setup <<< \
      "$admin_name"
-./nodebb build
+sudo ./nodebb build
 popd
 
 sudo chown -R nodebb:nodebb $final_path
