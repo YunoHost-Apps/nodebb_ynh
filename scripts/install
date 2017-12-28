@@ -126,6 +126,7 @@ systemctl start mongod
 script_dir="$PWD"
 pushd "$final_path"
 ynh_use_nodejs
+cp install/package.json .
 npm install --production >> $install_log 2>&1
 npm install mongo
 popd
