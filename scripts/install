@@ -33,7 +33,7 @@ ynh_abort_if_errors	# Active trap pour arrêter le script si une erreur est dét
 domain=$YNH_APP_ARG_DOMAIN
 is_public=$YNH_APP_ARG_IS_PUBLIC
 path_url="" # Assure la compatibilité avec les fonctions utilisant $path_url
-admin_user=$YNH_APP_ARG_ADMIN_NAME
+admin_user=$YNH_APP_ARG_ADMIN_USER
 admin_mail=$YNH_APP_ARG_ADMIN_MAIL
 admin_pass=$YNH_APP_ARG_ADMIN_PASS
 app=$YNH_APP_INSTANCE_NAME
