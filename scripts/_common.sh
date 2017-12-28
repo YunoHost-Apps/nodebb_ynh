@@ -563,4 +563,5 @@ $(yunohost tools diagnosis | grep -B 100 "services:" | sed '/services:/d')"
 # | arg: file - The file for which the checksum will be deleted
 ynh_delete_file_checksum () {
 	local checksum_setting_name=checksum_${1//[\/ ]/_}	# Replace all '/' and ' ' by '_'
-ynh_app_setting_delete $app $checksum_setting_name
+	ynh_app_setting_delete $app $checksum_setting_name
+}
