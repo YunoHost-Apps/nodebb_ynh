@@ -150,13 +150,13 @@ popd
 # Modify Nginx configuration file and copy it to Nginx conf directory
 #=================================================
 
-ynh_nginx_config
+ynh_add_nginx_config
 nginxconf=/etc/nginx/conf.d/$domain.d/$app.conf
 sudo chown root: $nginxconf
 sudo chmod 600 $nginxconf
 cat $nginxconf
 
-ynh_systemd_config
+ynh_add_systemd_config
 ynh_replace_string "__NODEJS__" "$nodejs_use_version" "/etc/systemd/system/$app.service"
 ynh_replace_string "__ENV_PATH__" "$PATH" "/etc/systemd/system/$app.service"
 ynh_replace_string "__NODE__" "$nodejs_path" "/etc/systemd/system/$app.service"
