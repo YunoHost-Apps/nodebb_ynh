@@ -57,7 +57,7 @@ test ! -e "$final_path" || ynh_die "This path already contains a folder"
 
 ynh_app_setting_set $app domain $domain
 ynh_app_setting_set $app is_public $is_public
-ynh_app_setting_set "$app" admin_name "$admin_name"
+ynh_app_setting_set "$app" admin_user "$admin_user"
 ynh_app_setting_set "$app" secret "$secret"
 
 #=================================================
