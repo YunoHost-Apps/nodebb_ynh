@@ -100,12 +100,12 @@ ynh_use_nodejs
 #=================================================
 
 # Créer le dossier de log
-sudo mkdir -p /var/log/$app
-sudo touch /var/log/$app/nodebb.log
+mkdir -p /var/log/$app
+touch /var/log/$app/nodebb.log
 install_log=/var/log/$app/installation.log
-sudo touch $install_log
-sudo chown $app -R /var/log/$app
-sudo chown admin -R $install_log
+touch $install_log
+chown $app -R /var/log/$app
+chown admin -R $install_log
 
 # Configuration de logrotate
 ynh_use_logrotate
@@ -122,7 +122,7 @@ ynh_setup_source "$final_path"	# Télécharge la source, décompresse et copie d
 # BEGINING OF THE INSTALLATION
 #=================================================
 
-sudo service mongod start
+systemctl start mongod
 script_dir="$PWD"
 pushd "$final_path"
 ynh_use_nodejs
@@ -130,7 +130,7 @@ npm install --production >> $install_log 2>&1
 npm install mongo
 popd
 
-sudo yunohost firewall allow Both $port
+yunohost firewall allow Both $port
 
 #=================================================
 # CREATE A SQL BDD
@@ -178,9 +178,9 @@ cat $final_path/config.json
 #=================================================
 
 pushd $final_path
-sudo ./nodebb setup <<< \
+./nodebb setup <<< \
      "$admin_name"
-sudo ./nodebb build
+./nodebb build
 popd
 
 chown -R $app:$app $final_path
