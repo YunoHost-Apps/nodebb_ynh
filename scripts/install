@@ -222,3 +222,5 @@ fi
 systemctl reload nginx
 cat $final_path/config.json
 systemctl status nodebb
+sleep 10
+systemctl status nodebb
