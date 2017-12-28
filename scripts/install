@@ -117,8 +117,6 @@ ynh_use_logrotate
 final_path=/var/www/$app
 ynh_app_setting_set $app final_path $final_path
 ynh_setup_source "$final_path"	# Télécharge la source, décompresse et copie dans $final_path
-sudo chmod 755 $final_path -R
-sudo chown $app: $final_path -R
 
 #=================================================
 # BEGINING OF THE INSTALLATION
@@ -142,8 +140,8 @@ pushd $final_path
 dbname=$app
 dbuser=$app
 dbpass=$(ynh_string_random)
-sudo mongo --shell "$dbname" --eval 'db.createUser( { user: "'${dbuser}'", pwd: "'${dbpass}'", roles: [ "readWrite" ] } );' <<< exit
-sudo mongo --shell "$dbname" --eval 'db.grantRolesToUser("'${dbuser}'",[{ role: "clusterMonitor", db: "admin" }]);' <<< exit
+mongo --shell "$dbname" --eval 'db.createUser( { user: "'${dbuser}'", pwd: "'${dbpass}'", roles: [ "readWrite" ] } );' <<< exit
+mongo --shell "$dbname" --eval 'db.grantRolesToUser("'${dbuser}'",[{ role: "clusterMonitor", db: "admin" }]);' <<< exit
 popd
 
 #=================================================
@@ -166,13 +164,13 @@ cat /etc/systemd/system/$app.service
 # CONFIGURE SERVER.JS	
 #=================================================
 
-sudo mv ../conf/config.json $final_path/config.json
-sudo sed -i "s@__URL__@$domain@g" $final_path/config.json
-sudo sed -i "s@__PORT__@$port@g" $final_path/config.json
-sudo sed -i "s@__SECRET__@$secret@g" $final_path/config.json
-sudo sed -i "s@dbuser@$dbuser@g" $final_path/config.json
-sudo sed -i "s@dbname@$dbname@g" $final_path/config.json
-sudo sed -i "s@dbpass@$dbpass@g" $final_path/config.json
+mv ../conf/config.json $final_path/config.json
+ynh_replace_string "__URL__" "$domain" "$final_path/config.json"
+ynh_replace_string "__PORT__" "$port" "$final_path/config.json"
+ynh_replace_string "__SECRET__" "$secret" "$final_path/config.json"
+ynh_replace_string "dbuser" "$dbuser" "$final_path/config.json"
+ynh_replace_string "dbname" "$dbname" "$final_path/config.json"
+ynh_replace_string "dbpass" "$dbpass" "$final_path/config.json"
 cat $final_path/config.json
 
 #=================================================
@@ -180,14 +178,12 @@ cat $final_path/config.json
 #=================================================
 
 pushd $final_path
-sudo chown -R $app:$app $final_path
-sudo chmod 775 $final_path -R
 sudo ./nodebb setup <<< \
      "$admin_name"
 sudo ./nodebb build
 popd
 
-sudo chown -R nodebb:nodebb $final_path
+chown -R $app:$app $final_path
 
 #=================================================
 # START NodeBB IN BACKGROUND
@@ -201,13 +197,13 @@ sudo systemctl enable "$app".service
 # START ETHERPAD IN BACKGROUND
 #=================================================
 
-sudo systemctl start $app     # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
+systemctl start $app     # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
 
 #=================================================
 # ENABLE SERVICE IN ADMIN PANEL
 #=================================================
 
-sudo yunohost service add $app --log "/var/log/$app/nodebb.log"
+yunohost service add $app --log "/var/log/$app/nodebb.log"
 
 #=================================================
 # SETUP SSOWAT
@@ -222,6 +218,6 @@ fi
 # RELOAD NGINX
 #=================================================
 
-sudo systemctl reload nginx
+systemctl reload nginx
 cat $final_path/config.json
-sudo systemctl status nodebb
+systemctl status nodebb
