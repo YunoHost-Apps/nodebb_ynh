@@ -220,7 +220,5 @@ fi
 #=================================================
 
 systemctl reload nginx
-cat $final_path/config.json
-systemctl status nodebb
-sleep 10
-systemctl status nodebb
+ynh_check_starting "NodeBB is now listening on: 0.0.0.0:4567" "/var/log/syslog" "30"
+
