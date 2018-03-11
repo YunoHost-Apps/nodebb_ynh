@@ -41,13 +41,6 @@ then
 fi
 
 #=================================================
-# REMOVE DEPENDENCIES
-#=================================================
-
-# Remove metapackage and its dependencies
-ynh_remove_app_dependencies
-
-#=================================================
 # REMOVE THE MONGO DATABASE
 #=================================================
 
@@ -55,6 +48,13 @@ mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --
 #mongo --shell "$dbname" --eval 'db.dropUser('dbuser');' <<< exit
 mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --eval 'db.dropDatabase();' <<< exit
 #mongo --shell "$dbname" --eval 'db.dropDatabase();' <<< exit
+
+#=================================================
+# REMOVE DEPENDENCIES
+#=================================================
+
+# Remove metapackage and its dependencies
+ynh_remove_app_dependencies
 
 #=================================================
 # REMOVE APP MAIN DIR
