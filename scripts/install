@@ -74,7 +74,8 @@ ynh_install_nodejs $version
 # CREATE DEDICATED USER
 #=================================================
 
-ynh_system_user_create $app /home/$app	# Créer un utilisateur système dédié à l'app
+# Create a system user
+ynh_system_user_create $app
 
 #=================================================
 # NODEJS Version
