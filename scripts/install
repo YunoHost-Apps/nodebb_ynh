@@ -36,9 +36,6 @@ secret=$(ynh_string_random)
 final_path=/var/www/$app
 test ! -e "$final_path" || ynh_die "This path already contains a folder"
 
-ynh_webpath_available $domain $path_url
-ynh_webpath_register $app $domain $path_url
-
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
