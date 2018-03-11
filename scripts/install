@@ -135,6 +135,9 @@ dbuser=$app
 dbpass=$(ynh_string_random)
 mongo --shell "$dbname" --eval 'db.createUser( { user: "'${dbuser}'", pwd: "'${dbpass}'", roles: [ "readWrite" ] } );' <<< exit
 mongo --shell "$dbname" --eval 'db.grantRolesToUser("'${dbuser}'",[{ role: "clusterMonitor", db: "admin" }]);' <<< exit
+ynh_app_setting_set $app dbuser $dbuser
+ynh_app_setting_set $app dbpass $dbpass
+ynh_app_setting_set $app dbname $dbname
 popd
 
 #=================================================
