@@ -18,6 +18,7 @@ app=$YNH_APP_INSTANCE_NAME
 domain=$(ynh_app_setting_get $app domain)
 port=$(ynh_app_setting_get $app port)
 dbname=$(ynh_app_setting_get $app dbname)
+dbpass=$(ynh_app_setting_get $app dbpass)
 dbuser=$dbname
 final_path=$(ynh_app_setting_get $app final_path)
 
