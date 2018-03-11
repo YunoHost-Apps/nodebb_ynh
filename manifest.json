@@ -7,7 +7,7 @@
         "fr": "Forum écrit en nodejs"
     },
     "url": "https://nodebb.org/",
-    "license": "GPLv3",
+    "license": "GPL-3.0",
     "maintainer": {
         "name": "frju365",
         "email": "win10@tutanota.com",
