@@ -51,8 +51,10 @@ ynh_remove_app_dependencies
 # REMOVE THE MONGO DATABASE
 #=================================================
 
-mongo --shell "$dbname" --eval 'db.dropUser('dbuser');' <<< exit
-mongo --shell "$dbname" --eval 'db.dropDatabase();' <<< exit
+mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --eval 'db.dropUser('dbuser');' <<< exit
+#mongo --shell "$dbname" --eval 'db.dropUser('dbuser');' <<< exit
+mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --eval 'db.dropDatabase();' <<< exit
+#mongo --shell "$dbname" --eval 'db.dropDatabase();' <<< exit
 
 #=================================================
 # REMOVE APP MAIN DIR
