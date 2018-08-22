@@ -62,16 +62,14 @@ ynh_app_setting_set $app port $port
 # INSTALL DEPENDENCIES
 #=================================================
 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
-sudo apt-get update
-ynh_install_app_dependencies mongodb-org
+ynh_install_app_dependencies mongodb
+systemctl start mongodb
 
 #=================================================
 # INSTALL NODEJS
 #=================================================
 
-version=9.3.0
+version=8.11.4
 ynh_install_nodejs $version
 
 #=================================================
@@ -80,12 +78,6 @@ ynh_install_nodejs $version
 
 # Create a system user
 ynh_system_user_create $app
-
-#=================================================
-# NODEJS Version
-#=================================================
-
-ynh_use_nodejs
 
 #=================================================
 # SPECIFIC SETUP
@@ -113,19 +105,6 @@ ynh_app_setting_set $app final_path $final_path
 ynh_setup_source "$final_path"	# Télécharge la source, décompresse et copie dans $final_path
 
 #=================================================
-# BEGINING OF THE INSTALLATION
-#=================================================
-
-systemctl start mongod
-script_dir="$PWD"
-pushd "$final_path"
-ynh_use_nodejs
-cp install/package.json .
-npm install --production >> $install_log 2>&1
-npm install mongo
-popd
-
-#=================================================
 # CREATE A SQL BDD
 #=================================================
 
@@ -145,10 +124,10 @@ popd
 #=================================================
 
 ynh_add_nginx_config
-nginxconf=/etc/nginx/conf.d/$domain.d/$app.conf
-sudo chown root: $nginxconf
-sudo chmod 600 $nginxconf
-cat $nginxconf
+
+#=================================================
+# Add Systemd service
+#=================================================
 
 ynh_add_systemd_config
 ynh_replace_string "__NODEJS__" "$nodejs_use_version" "/etc/systemd/system/$app.service"
@@ -192,7 +171,6 @@ sudo systemctl enable "$app".service
 #=================================================
 
 systemctl start $app     # Démarre Nodebb. Le démarrage est fait le plus tôt possible, car il est très long...
-ynh_check_starting "NodeBB is now listening on: 0.0.0.0:4567" "/var/log/syslog" "60"
 
 #=================================================
 # ENABLE SERVICE IN ADMIN PANEL
@@ -214,6 +192,7 @@ then
 	# unprotected_uris allows SSO credentials to be passed anyway.
 	ynh_app_setting_set $app unprotected_uris "/"
 fi
+ynh_check_starting "NodeBB is now listening on: 0.0.0.0:4567" "/var/log/syslog" "90"
 
 #=================================================
 # RELOAD NGINX
