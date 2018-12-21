@@ -69,8 +69,7 @@ systemctl start mongodb
 # INSTALL NODEJS
 #=================================================
 
-version=8.11.4
-ynh_install_nodejs $version
+ynh_install_nodejs 10
 
 #=================================================
 # CREATE DEDICATED USER
