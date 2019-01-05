@@ -45,7 +45,7 @@ fi
 # REMOVE THE MONGO DATABASE
 #=================================================
 
-mongo --shell "$dbname" --eval 'db.dropUser("$dbuser", {w: "majority", wtimeout: 5000})' <<< exit
+mongo --shell "$dbname" --eval "db.dropUser('$db_user', {w: 'majority', wtimeout: 5000})" <<< exit
 #mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --eval 'db.dropUser('dbuser');' <<< exit
 mongo --shell "$dbname" --eval 'db.runCommand({dropDatabase: 1})' <<< exit
 #mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --eval 'db.dropDatabase();' <<< exit
