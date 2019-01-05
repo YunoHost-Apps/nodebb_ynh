@@ -152,6 +152,7 @@ cat $final_path/config.json
 #=================================================
 
 pushd $final_path
+npm install --production --allow-root
 ./nodebb setup
 ./nodebb build
 popd
