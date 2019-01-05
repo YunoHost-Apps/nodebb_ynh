@@ -7,9 +7,8 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
-ExecStartPre=__NODEJS__
-Environment="PATH=__ENV_PATH__"
-ExecStart=__NODE__ loader.js --no-daemon --no-silent
+Environment=NODE_ENV=production
+ExecStart=__NODE__/node loader.js --no-daemon --no-silent
 Restart=always
 
 [Install]
