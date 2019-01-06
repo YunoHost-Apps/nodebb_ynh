@@ -152,6 +152,7 @@ cat $final_path/config.json
 chown -R $app:$app $final_path
 pushd $final_path
 exec_as "$app" ./nodebb setup -l > $install_log
+exec_as "$app" npm install nodebb-plugin-dbsearch --save-prod
 exec_as "$app" ./nodebb build -l
 popd
 
