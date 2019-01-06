@@ -150,9 +150,8 @@ cat $final_path/config.json
 #=================================================
 
 pushd $final_path
-npm install --production --allow-root
-./nodebb setup
-./nodebb build
+./nodebb setup -l
+./nodebb build -l
 popd
 chown -R $app:$app $final_path
 
