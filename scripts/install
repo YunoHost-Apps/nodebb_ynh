@@ -149,11 +149,12 @@ cat $final_path/config.json
 # CONFIGURE NODEBB
 #=================================================
 
-pushd $final_path
-./nodebb setup -l
-./nodebb build -l
-popd
 chown -R $app:$app $final_path
+pushd $final_path
+exec_login_as $app "cd $final_path && bash ./nodebb setup -l"
+exec_login_as $app "cd $final_path && bash ./nodebb build -l"
+popd
+
 
 #=================================================
 # START NodeBB IN BACKGROUND
