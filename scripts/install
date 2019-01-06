@@ -151,8 +151,8 @@ cat $final_path/config.json
 
 chown -R $app:$app $final_path
 pushd $final_path
-exec_as "$app" cd $final_path && bash ./nodebb setup -l
-exec_as "$app" cd $final_path && bash ./nodebb build -l
+exec_as "$app" bash cd $final_path && bash ./nodebb setup -l
+exec_as "$app" bash cd $final_path && bash ./nodebb build -l
 popd
 
 
