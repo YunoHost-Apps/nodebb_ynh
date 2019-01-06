@@ -151,7 +151,7 @@ cat $final_path/config.json
 
 chown -R $app:$app $final_path
 pushd $final_path
-exec_as "$app" ./nodebb setup -l
+exec_as "$app" ./nodebb setup -l > $install_log
 exec_as "$app" npm install nodebb-plugin-dbsearch --save-prod
 exec_as "$app" ./nodebb build -l
 popd
@@ -198,3 +198,18 @@ ynh_check_starting "NodeBB is now listening on: 0.0.0.0:4567" "/var/log/syslog" 
 #=================================================
 
 systemctl reload nginx
+
+#=================================================
+# SEND A README FOR THE ADMIN
+#=================================================
+
+mail_content=$(cat $install_log | grep '\(Username\|Password\)')*
+
+message=" $app was successfully installed :)
+Please open your $app domain: https://$domain$path_url
+
+$mail_content
+
+If you are facing any problem or want to improve this app, please open a new issue here: https://github.com/YunoHost-Apps/nodebb_ynh"
+
+ynh_send_readme_to_admin "$message"

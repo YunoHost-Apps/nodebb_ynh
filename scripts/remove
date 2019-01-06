@@ -46,10 +46,7 @@ fi
 #=================================================
 
 mongo --shell "$dbname" --eval 'db.dropUser("'${dbuser}'", {w: "majority", wtimeout: 5000})' <<< exit
-#mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --eval 'db.dropUser('dbuser');' <<< exit
 mongo --shell "$dbname" --eval 'db.runCommand({dropDatabase: 1})' <<< exit
-#mongo -u $dbuser -p$dbpass --authenticationDatabase $dbname --shell "$dbname" --eval 'db.dropDatabase();' <<< exit
-
 
 #=================================================
 # REMOVE DEPENDENCIES
@@ -71,13 +68,6 @@ ynh_secure_remove "$final_path"
 
 # Remove the dedicated nginx config
 ynh_remove_nginx_config
-
-#=================================================
-# REMOVE PHP-FPM CONFIGURATION
-#=================================================
-
-# Remove the dedicated php-fpm config
-#ynh_remove_fpm_config
 
 #=================================================
 # REMOVE LOGROTATE CONFIGURATION
