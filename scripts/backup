@@ -41,7 +41,8 @@ pushd $final_path
 mkdir mongo_backup
 datebackup=$(date -u +%H%M%m%G)
 ynh_app_setting_set $app datebackup $datebackup
-pushd mongo_backup$datebackup
+mkdir mongo_backup/$datebackup
+pushd mongo_backup/$datebackup
 mongodump --db $dbname
 popd
 popd
