@@ -86,8 +86,15 @@ ynh_install_app_dependencies mongodb-org
 
 pushd $final_path
 datebackup=$(ynh_app_setting_get $app datebackup)
-mongorestore mongo_backup$datebackup/
-ynh_secure_remove mongo_backup$datebackup/
+mongorestore mongo_backup/$datebackup/
+popd
+
+#=================================================
+# Try reconfiguration
+#=================================================
+
+pushd $final_path
+exec_as "$app" ./nodebb build -l
 popd
 
 #=================================================
@@ -122,5 +129,4 @@ ynh_restore_file "/etc/logrotate.d/$app"
 # RELOAD NGINX AND PHP-FPM
 #=================================================
 
-systemctl reload php5-fpm
 systemctl reload nginx
