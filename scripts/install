@@ -84,7 +84,7 @@ popd
 # INSTALL NODEJS
 #=================================================
 
-ynh_install_nodejs 10
+ynh_install_nodejs 8
 
 #=================================================
 # CREATE DEDICATED USER
