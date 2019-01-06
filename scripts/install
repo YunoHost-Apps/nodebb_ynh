@@ -82,7 +82,7 @@ mongo --shell "$dbname" --eval 'db.grantRolesToUser("'${dbuser}'",[{ role: "clus
 # INSTALL NODEJS
 #=================================================
 
-ynh_install_nodejs 8
+ynh_install_nodejs 8.14.0
 
 #=================================================
 # CREATE DEDICATED USER
