@@ -69,7 +69,6 @@ systemctl start mongodb
 # CREATE A SQL BDD
 #=================================================
 
-pushd $final_path
 dbname=$app
 dbuser=$app
 dbpass=$(ynh_string_random)
@@ -78,7 +77,6 @@ ynh_app_setting_set $app dbpass $dbpass
 ynh_app_setting_set $app dbname $dbname
 mongo --shell "$dbname" --eval 'db.createUser( { user: "'${dbuser}'", pwd: "'${dbpass}'", roles: [ "readWrite" ] } );' <<< exit
 mongo --shell "$dbname" --eval 'db.grantRolesToUser("'${dbuser}'",[{ role: "clusterMonitor", db: "admin" }]);' <<< exit
-popd
 
 #=================================================
 # INSTALL NODEJS
