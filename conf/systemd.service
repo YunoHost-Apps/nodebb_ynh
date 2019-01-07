@@ -8,6 +8,7 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
 Environment=NODE_ENV=production
+Environment="PATH=__ENV_PATH__"
 ExecStart=__NODE__/node loader.js --no-daemon --no-silent
 Restart=always
 
