@@ -1,5 +1,5 @@
 # NodeBB
-
+[![Integration level](https://dash.yunohost.org/integration/nodebb.svg)](https://ci-apps.yunohost.org/jenkins/job/nodebb%20%28Community%29/lastBuild/consoleFull)  
 TEST UNIQUEMENT (pour l'instant)/TEST ONLY (for the moment)
 
 - Website of the Yuno-package : https://github.com/YunoHost-Apps/nodebb_ynh
