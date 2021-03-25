@@ -12,8 +12,8 @@ WorkingDirectory=__FINALPATH__
 Environment="NODE_ENV=production"
 Environment="__YNH_NODE_LOAD_PATH__"
 
-#ExecStart=__NODE__/node loader.js --no-daemon --no-silent
-ExecStart= start
+ExecStart= loader.js --no-daemon --no-silent
+#ExecStart= start
 
 Restart=always
 
