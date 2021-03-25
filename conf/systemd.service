@@ -8,9 +8,10 @@ Type=forking
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
-PIDFile=/path/to/nodebb/pidfile
+#PIDFile=/path/to/nodebb/pidfile
 Environment=NODE_ENV=production
-ExecStart=__NODE__/node loader.js --no-daemon --no-silent
+#ExecStart=__NODE__/node loader.js --no-daemon --no-silent
+ExecStart=__YNH_NPM__ start
 Restart=always
 
 [Install]
