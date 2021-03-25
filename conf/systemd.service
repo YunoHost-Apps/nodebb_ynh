@@ -11,10 +11,9 @@ WorkingDirectory=__FINALPATH__
 #PIDFile=/path/to/nodebb/pidfile
 Environment="NODE_ENV=production"
 Environment="__YNH_NODE_LOAD_PATH__"
-
-ExecStart= loader.js --no-daemon --no-silent
+#ExecStart= loader.js --no-daemon --no-silent
 #ExecStart= start
-
+ExecStart=__YNH_NODE_LOAD_PATH__ loader.js
 Restart=always
 
 [Install]
