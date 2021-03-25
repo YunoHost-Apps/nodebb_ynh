@@ -4,10 +4,10 @@
 # COMMON VARIABLES
 #=================================================
 
-nodejs_version=14
-
 # dependencies used by the app
 pkg_dependencies="postgresql postgresql-contrib"
+
+nodejs_version=14
 
 #=================================================
 # PERSONAL HELPERS
@@ -20,7 +20,6 @@ pkg_dependencies="postgresql postgresql-contrib"
 #=================================================
 # FUTURE OFFICIAL HELPERS
 #=================================================
-
 
 # Execute a command as another user
 # usage: exec_as USER COMMAND [ARG ...]
