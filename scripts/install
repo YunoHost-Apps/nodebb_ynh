@@ -124,10 +124,10 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --time --weight=1
 
-ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/systemd.service"
-ynh_replace_string --match_string="__YNH_NPM__" --replace_string="$ynh_npm" --target_file="../conf/systemd.service"
+#ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/systemd.service"
+#ynh_replace_string --match_string="__YNH_NPM__" --replace_string="$ynh_npm" --target_file="../conf/systemd.service"
 
-ynh_add_systemd_config
+ynh_add_systemd_config --others_var="ynh_node_load_PATH"
 
 #=================================================
 # CONFIGURE SERVER.JS	
@@ -142,9 +142,12 @@ ynh_add_config --template="../conf/config.json" --destination="$final_path/confi
 chown -R $app:$app $final_path
 
 pushd $final_path
-	exec_as $app ./nodebb setup -l > $install_log
-	exec_as $app npm install nodebb-plugin-dbsearch --save-prod
-	exec_as $app ./nodebb build -l
+	ynh_exec_as $app env $ynh_node_load_PATH ./nodebb setup -l > $install_log
+	ynh_exec_as  $app env $ynh_node_load_PATH npm install nodebb-plugin-dbsearch --save-prod
+	ynh_exec_as  $app env $ynh_node_load_PATH ./nodebb build -l
+	#exec_as $app ./nodebb setup -l > $install_log
+	#exec_as $app npm install nodebb-plugin-dbsearch --save-prod
+	#exec_as $app ./nodebb build -l
 popd
 
 

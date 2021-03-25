@@ -22,15 +22,15 @@ nodejs_version=14
 #=================================================
 
 # Execute a command as another user
-# usage: exec_as USER COMMAND [ARG ...]
-exec_as() {
-  local user=$1
+# usage: ynh_exec_as USER COMMAND [ARG ...]
+ynh_exec_as() {
+  local USER=$1
   shift 1
 
-  if [[ $user = $(whoami) ]]; then
+  if [[ $USER = $(whoami) ]]; then
     eval "$@"
   else
-    sudo -u "$user" "$@"
+    sudo -u "$USER" "$@"
   fi
 }
 
