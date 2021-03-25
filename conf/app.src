@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/NodeBB/NodeBB/archive/v1.11.1.tar.gz
-SOURCE_SUM=ab12c046d23d38a24fe16a0276fff7f61c76b8c1de2538853875ba9234e23fcd
+SOURCE_URL=https://github.com/NodeBB/NodeBB/archive/refs/tags/v1.16.2.tar.gz
+SOURCE_SUM=2ae8745a9081dc9743f17cb46c81cd0636947f13ae752a314650af328141614a
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true

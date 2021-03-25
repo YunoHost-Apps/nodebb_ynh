@@ -1,12 +1,14 @@
 [Unit]
-Description=NodeBB forum for Node.js.
-After=network.target
+Description=NodeBB
+Documentation=https://docs.nodebb.org
+After=system.slice multi-user.target mongod.service
 
 [Service]
-Type=simple
+Type=forking
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
+PIDFile=/path/to/nodebb/pidfile
 Environment=NODE_ENV=production
 ExecStart=__NODE__/node loader.js --no-daemon --no-silent
 Restart=always
