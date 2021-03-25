@@ -1,7 +1,7 @@
 {
     "url": "https://__DOMAIN__",
     "secret": "__SECRET__",
-    "database": "mongo",
+    "database": "postgres",
     "port": "__PORT__",
     "postgres": {
         "host": "127.0.0.1",
