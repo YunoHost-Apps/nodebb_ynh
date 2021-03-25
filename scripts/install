@@ -142,14 +142,16 @@ ynh_add_config --template="../conf/config.json" --destination="$final_path/confi
 chown -R $app:$app $final_path
 
 pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH ./nodebb setup -l > $install_log
-	ynh_exec_as  $app env $ynh_node_load_PATH npm install nodebb-plugin-dbsearch --save-prod
-	ynh_exec_as  $app env $ynh_node_load_PATH ./nodebb build -l
+	#ynh_exec_as $app env $ynh_node_load_PATH 
+	./nodebb setup -l > $install_log
+	#ynh_exec_as $app env $ynh_node_load_PATH 
+	npm install nodebb-plugin-dbsearch --save-prod
+	#ynh_exec_as $app env $ynh_node_load_PATH 
+	./nodebb build -l
 	#exec_as $app ./nodebb setup -l > $install_log
 	#exec_as $app npm install nodebb-plugin-dbsearch --save-prod
 	#exec_as $app ./nodebb build -l
 popd
-
 
 #=================================================
 # START NodeBB IN BACKGROUND
