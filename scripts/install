@@ -59,9 +59,11 @@ ynh_app_setting_set --app=$app --key=port --value=$port
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
+ynh_script_progression --message="Installing dependencies..." --time --weight=1
 
-ynh_install_app_dependencies mongodb
-systemctl start mongodb
+ynh_install_app_dependencies $pkg_dependencies
+
+ynh_install_nodejs --nodejs_version=$nodejs_version
 
 #=================================================
 # CREATE A MYSQL DATABASE
@@ -72,19 +74,6 @@ db_name=$(ynh_sanitize_dbid --db_name=$app)
 db_user=$db_name
 ynh_app_setting_set --app=$app --key=db_name --value=$db_name
 ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
-
-mongo --shell "$dbname" --eval 'db.createUser( { user: "'$db_user'", pwd: "'$db_pwd'", roles: [ "readWrite" ] } );' <<< exit
-mongo --shell "$dbname" --eval 'db.grantRolesToUser("'$db_user'",[{ role: "clusterMonitor", db: "admin" }]);' <<< exit
-
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=6
-
-#ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
-
-ynh_install_nodejs --nodejs_version=$nodejs_version
 
 #=================================================
 # CREATE DEDICATED USER
@@ -136,7 +125,6 @@ ynh_script_progression --message="Configuring a systemd service..." --time --wei
 ynh_replace_string "__NODEJS__" "$nodejs_use_version" "/etc/systemd/system/$app.service"
 ynh_replace_string "__ENV_PATH__" "$PATH" "/etc/systemd/system/$app.service"
 ynh_replace_string "__NODE__" "$nodejs_path" "/etc/systemd/system/$app.service"
-cat /etc/systemd/system/$app.service
 
 ynh_add_systemd_config
 
