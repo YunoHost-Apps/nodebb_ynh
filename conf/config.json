@@ -6,8 +6,8 @@
     "postgres": {
         "host": "127.0.0.1",
         "port": "5432",
-        "username": "db_user",
-        "password": "db_pass",
-        "database": "db_name"
+        "username": "__DB_NAME__",
+        "password": "__DB_PWD__",
+        "database": "__DB_NAME__"
     }
 }
