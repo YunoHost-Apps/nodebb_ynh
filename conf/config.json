@@ -1,8 +1,8 @@
 {
     "url": "https://__DOMAIN__",
     "secret": "__SECRET__",
-    "database": "postgres",
     "port": "__PORT__",
+    "database": "postgres",
     "postgres": {
         "host": "127.0.0.1",
         "port": "5432",

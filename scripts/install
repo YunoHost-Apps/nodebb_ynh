@@ -51,7 +51,7 @@ ynh_app_setting_set --app=$app --key=$secret --value="$secret"
 #=================================================
 # FIND AND OPEN A PORT
 #=================================================
-ynh_script_progression --message="Finding an available port..." --time --weight=1
+ynh_script_progression --message="Finding an available port..." --weight=1
 
 # Find an available port
 port=$(ynh_find_port --port=4567)
@@ -60,7 +60,7 @@ ynh_app_setting_set --app=$app --key=port --value=$port
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --time --weight=1
+ynh_script_progression --message="Installing dependencies..." --weight=1
 
 ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
 
@@ -70,7 +70,7 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 #=================================================
 # CREATE A MYSQL DATABASE
 #=================================================
-ynh_script_progression --message="Creating a PostgreSQL database..." --time --weight=1
+ynh_script_progression --message="Creating a PostgreSQL database..." --weight=9
 
 db_name=$(ynh_sanitize_dbid --db_name=$app)
 ynh_app_setting_set --app=$app --key=db_name --value=$db_name
@@ -80,7 +80,7 @@ ynh_psql_setup_db --db_user=$db_name --db_name=$db_name
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Configuring system user..." --time --weight=1
+ynh_script_progression --message="Configuring system user..." --weight=3
 
 # Create a system user
 ynh_system_user_create --username=$app
@@ -105,7 +105,7 @@ ynh_use_logrotate
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --time --weight=1
+ynh_script_progression --message="Setting up source files..." --weight=2
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
@@ -114,7 +114,7 @@ ynh_setup_source --dest_dir="$final_path"
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --time --weight=1
+ynh_script_progression --message="Configuring NGINX web server..." --weight=3
 
 # Create a dedicated NGINX config
 ynh_add_nginx_config
@@ -122,7 +122,7 @@ ynh_add_nginx_config
 #=================================================
 # Add Systemd service
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..." --time --weight=1
+ynh_script_progression --message="Configuring a systemd service..." --weight=1
 
 #ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/systemd.service"
 #ynh_replace_string --match_string="__YNH_NPM__" --replace_string="$ynh_npm" --target_file="../conf/systemd.service"
@@ -157,9 +157,9 @@ popd
 # START NodeBB IN BACKGROUND
 #=================================================
 
-cat /etc/systemd/system/$app.service
-systemctl daemon-reload
-systemctl enable $app.service
+# cat /etc/systemd/system/$app.service
+# systemctl daemon-reload
+# systemctl enable $app.service
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
@@ -171,9 +171,9 @@ yunohost service add $app --description="A short description of the app" --log="
 #=================================================
 # START ETHERPAD IN BACKGROUND
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --time --weight=1
+ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name=$app --action=restart --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # SETUP SSOWAT
@@ -189,8 +189,10 @@ fi
 #=================================================
 # RELOAD NGINX
 #=================================================
+ynh_script_progression --message="Reloading NGINX web server..." --weight=1
 
-systemctl reload nginx
+ynh_systemd_action --service_name=nginx --action=reload
+
 
 #=================================================
 # SEND A README FOR THE ADMIN
@@ -204,5 +206,11 @@ Please open your $app domain: https://$domain$path_url
 $mail_content
 
 If you are facing any problem or want to improve this app, please open a new issue here: https://github.com/YunoHost-Apps/nodebb_ynh"
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Installation of $app completed" --last
 
 ynh_send_readme_to_admin "$message"

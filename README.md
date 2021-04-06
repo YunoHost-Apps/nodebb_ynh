@@ -39,8 +39,8 @@ Can the app be used by multiple users?
 
 #### Supported architectures
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/nodebb%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/nodebb%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/nodebb/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/nodebb.svg)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/nodebb.svg)](https://ci-apps-arm.yunohost.org/ci/apps/nodebb/)
 
 ## Limitations
 
