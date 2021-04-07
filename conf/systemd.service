@@ -6,11 +6,16 @@ After=system.slice multi-user.target mongod.service
 [Service]
 Type=forking
 User=__APP__
-Group=__APP__
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodebb
+
+Environment=NODE_ENV=production
 WorkingDirectory=__FINALPATH__
-Environment="NODE_ENV=production"
+PIDFile=__FINALPATH__/pidfile
 Environment="__YNH_NODE_LOAD_PATH__"
-ExecStart=__FINALPATH__/loader.js --no-daemon --no-silent
+ExecStart=__FINALPATH__/loader.js
 Restart=always
 
 [Install]
