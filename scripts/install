@@ -111,6 +111,10 @@ ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$final_path"
 
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
@@ -148,9 +152,9 @@ pushd $final_path
 	#npm install nodebb-plugin-dbsearch --save-prod
 	#ynh_exec_as $app env $ynh_node_load_PATH 
 	#./nodebb build -l
-	#exec_as $app ./nodebb setup -l > $install_log
-	#exec_as $app npm install nodebb-plugin-dbsearch --save-prod
-	#exec_as $app ./nodebb build -l
+	#ynh_exec_as $app ./nodebb setup -l > $install_log
+	#ynh_exec_as $app npm install nodebb-plugin-dbsearch --save-prod
+	#ynh_exec_as $app ./nodebb build -l
 popd
 
 #=================================================
@@ -207,10 +211,10 @@ $mail_content
 
 If you are facing any problem or want to improve this app, please open a new issue here: https://github.com/YunoHost-Apps/nodebb_ynh"
 
+ynh_send_readme_to_admin "$message"
+
 #=================================================
 # END OF SCRIPT
 #=================================================
 
 ynh_script_progression --message="Installation of $app completed" --last
-
-ynh_send_readme_to_admin "$message"

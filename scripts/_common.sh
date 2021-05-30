@@ -21,20 +21,6 @@ nodejs_version=14
 # FUTURE OFFICIAL HELPERS
 #=================================================
 
-# Execute a command as another user
-# usage: ynh_exec_as USER COMMAND [ARG ...]
-ynh_exec_as() {
-  local USER=$1
-  shift 1
-
-  if [[ $USER = $(whoami) ]]; then
-    eval "$@"
-  else
-    sudo -u "$USER" "$@"
-  fi
-}
-
-
 # Send an email to inform the administrator
 #
 # usage: ynh_send_readme_to_admin app_message [recipients]
