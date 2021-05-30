@@ -21,6 +21,10 @@ Forum écrit en nodejs
 
 ![](./doc/screenshots/Ud1LrfI.png)
 
+## Avertissements / informations importantes
+
+
+
 ## Documentations et ressources
 
 * Site officiel de l'app : https://nodebb.org

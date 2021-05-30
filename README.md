@@ -25,6 +25,10 @@ Nodejs Forum
 
 ![](./doc/screenshots/Ud1LrfI.png)
 
+## Disclaimers / important information
+
+
+
 ## Documentation and resources
 
 * Official app website: https://nodebb.org
