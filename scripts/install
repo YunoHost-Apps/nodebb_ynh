@@ -41,7 +41,7 @@ ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
-ynh_script_progression --message="Storing installation settings..." --time --weight=1
+ynh_script_progression --message="Storing installation settings..." --weight=1
 
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=$secret --value="$secret"
@@ -149,7 +149,7 @@ chown -R $app:$app $final_path
 
 pushd $final_path
 	#ynh_exec_as $app env $ynh_node_load_PATH 
-	./nodebb setup #-l > $install_log
+	ynh_exec_as $app env $ynh_node_load_PATH ./nodebb setup #-l > $install_log
 	#npm install nodebb-plugin-dbsearch --save-prod
 	#./nodebb build -l
 	#ynh_exec_as $app ./nodebb setup -l > $install_log
