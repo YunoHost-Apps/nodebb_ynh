@@ -6,13 +6,20 @@
         "en": "Nodejs Forum",
         "fr": "Forum écrit en nodejs"
     },
-    "version": "1.16.2~ynh1",
+    "version": "1.17.1~ynh1",
     "url": "https://nodebb.org/",
+    "upstream": {
+        "license": "GPL-3.0",
+        "website": "https://nodebb.org",
+        "demo": "https://try.nodebb.org",
+        "admindoc": "https://docs.nodebb.org/",
+        "userdoc": "https://yunohost.org/apps",
+        "code": "https://github.com/NodeBB/NodeBB/"
+    },
     "license": "GPL-3.0",
     "maintainer": {
         "name": "frju365",
-        "email": "abld@tutanota.com",
-        "url": "https://github.com/Yunohost-Apps/nodebb_ynh"
+        "email": "abld@tutanota.com"
     },
     "requirements": {
         "yunohost": ">> 4.2.4"
