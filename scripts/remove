@@ -98,4 +98,3 @@ ynh_system_user_delete --username=$app
 #=================================================
 
 ynh_script_progression --message="Removal of $app completed" --time --last
-
