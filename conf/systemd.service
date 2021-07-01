@@ -11,11 +11,11 @@ Environment=NODE_ENV=production
 WorkingDirectory=__FINALPATH__
 PIDFile=__FINALPATH__/pidfile
 Environment="__YNH_NODE_LOAD_PATH__"
-ExecStart=__FINALPATH__/loader.js
+ExecStart=__YNH_NODE__ loader.js
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=nodebb
+SyslogIdentifier=__APP__
 
 [Install]
 WantedBy=multi-user.target
