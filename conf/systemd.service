@@ -11,7 +11,7 @@ Environment=NODE_ENV=production
 WorkingDirectory=__FINALPATH__
 PIDFile=__FINALPATH__/pidfile
 Environment="__YNH_NODE_LOAD_PATH__"
-ExecStart=__YNH_NODE__ loader.js
+ExecStart=__YNH_NODE__ __FINALPATH__/nodebb start
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
