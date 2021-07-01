@@ -117,6 +117,22 @@ chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
 #=================================================
+# CONFIGURE NODEBB
+#=================================================
+
+chown -R $app: $final_path
+
+pushd $final_path
+	#ynh_exec_as $app env $ynh_node_load_PATH 
+	ynh_exec_as $app env $ynh_node_load_PATH ./nodebb setup -l > $install_log
+	#npm install nodebb-plugin-dbsearch --save-prod
+	#./nodebb build -l
+	#ynh_exec_as $app ./nodebb setup -l > $install_log
+	#ynh_exec_as $app npm install nodebb-plugin-dbsearch --save-prod
+	#ynh_exec_as $app ./nodebb build -l
+popd
+
+#=================================================
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Configuring NGINX web server..." --weight=3
@@ -141,21 +157,6 @@ ynh_add_config --template="../conf/config.json" --destination="$final_path/confi
 chmod 400 "$final_path/config.json"
 chown $app "$final_path/config.json"
 
-#=================================================
-# CONFIGURE NODEBB
-#=================================================
-
-chown -R $app:$app $final_path
-
-pushd $final_path
-	#ynh_exec_as $app env $ynh_node_load_PATH 
-	ynh_exec_as $app env $ynh_node_load_PATH ./nodebb setup -l > $install_log
-	#npm install nodebb-plugin-dbsearch --save-prod
-	#./nodebb build -l
-	#ynh_exec_as $app ./nodebb setup -l > $install_log
-	#ynh_exec_as $app npm install nodebb-plugin-dbsearch --save-prod
-	#ynh_exec_as $app ./nodebb build -l
-popd
 
 #=================================================
 # START NodeBB IN BACKGROUND
