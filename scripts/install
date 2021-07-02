@@ -109,7 +109,8 @@ ynh_script_progression --message="Setting up source files..." --weight=2
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$final_path"
+#ynh_setup_source --dest_dir="$final_path"
+git clone -b v1.17.x https://github.com/NodeBB/NodeBB.git nodebb "$final_path" --quiet
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
@@ -121,11 +122,9 @@ chown -R $app:www-data "$final_path"
 
 chown -R $app $final_path
 
-pushd $final_path/install
+pushd $final_path/nodebb
 	#ynh_exec_as $app env $ynh_node_load_PATH 
-	#ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup #-l > $install_log
-	npm install
-	npm build
+	ynh_exec_as $app env $ynh_node_load_PATH ./nodebb setup #-l > $install_log
 	#npm install nodebb-plugin-dbsearch --save-prod
 	#./nodebb build -l
 	#ynh_exec_as $app ./nodebb setup -l > $install_log
