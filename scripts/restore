@@ -59,6 +59,10 @@ ynh_script_progression --message="Restoring the app main directory..." --time --
 
 ynh_restore_file --origin_path="$final_path"
 
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+
 #=================================================
 # RECREATE THE DEDICATED USER
 #=================================================
@@ -66,13 +70,6 @@ ynh_script_progression --message="Recreating the dedicated system user..." --tim
 
 # Create the dedicated user (if not existing)
 ynh_system_user_create --username=$app
-
-#=================================================
-# RESTORE USER RIGHTS
-#=================================================
-
-# Restore permissions on app files
-chown -R $app:$app $final_path
 
 #=================================================
 # RESTORE THE MYSQL DATABASE

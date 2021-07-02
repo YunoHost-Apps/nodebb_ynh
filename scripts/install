@@ -66,7 +66,6 @@ ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
 
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
-#ynh_install_mongo
 
 #=================================================
 # CREATE A MYSQL DATABASE
@@ -120,7 +119,7 @@ chown -R $app:www-data "$final_path"
 # CONFIGURE NODEBB
 #=================================================
 
-chown -R $app: $final_path
+chown -R $app $final_path
 
 #pushd $final_path
 	#ynh_exec_as $app env $ynh_node_load_PATH 

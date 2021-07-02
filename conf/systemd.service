@@ -1,7 +1,7 @@
 [Unit]
 Description=NodeBB
 Documentation=https://docs.nodebb.org
-After=system.slice multi-user.target mongod.service
+After=system.slice multi-user.target
 
 [Service]
 Type=forking
