@@ -121,7 +121,7 @@ chown -R $app:www-data "$final_path"
 
 chown -R $app $final_path
 
-pushd $final_path
+pushd $final_path/install
 	#ynh_exec_as $app env $ynh_node_load_PATH 
 	#ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup #-l > $install_log
 	ynh_exec_as $app env $ynh_node_load_PATH npm install
