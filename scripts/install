@@ -122,7 +122,7 @@ chown -R $app:www-data "$final_path"
 
 chown -R $app $final_path
 
-pushd $final_path/nodebb
+pushd $final_path
 	#ynh_exec_as $app env $ynh_node_load_PATH 
 	ynh_exec_as $app env $ynh_node_load_PATH ./nodebb setup #-l > $install_log
 	#npm install nodebb-plugin-dbsearch --save-prod
