@@ -102,7 +102,7 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 #=================================================
 
 ynh_restore_file "/etc/systemd/system/$app.service"
-systemctl enable $app.service
+systemctl enable $app.service --quiet
 systemctl start $app
 
 #=================================================

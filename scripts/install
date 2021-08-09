@@ -171,7 +171,7 @@ chown $app "$final_path/config.json"
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="A short description of the app" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Nodejs Forum" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START ETHERPAD IN BACKGROUND
