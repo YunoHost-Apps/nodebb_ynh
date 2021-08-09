@@ -5,9 +5,9 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="postgresql postgresql-contrib"
+pkg_dependencies="postgresql postgresql-contribredis-server"
 
-nodejs_version=12
+nodejs_version=14
 
 #=================================================
 # PERSONAL HELPERS
