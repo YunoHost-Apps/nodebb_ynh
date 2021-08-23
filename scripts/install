@@ -120,8 +120,6 @@ chown -R $app:www-data "$final_path"
 # CONFIGURE NODEBB
 #=================================================
 
-chown -R $app $final_path
-
 pushd $final_path
 	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup #-l > $install_log
 popd
