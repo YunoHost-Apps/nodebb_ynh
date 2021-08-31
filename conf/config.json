@@ -3,6 +3,9 @@
     "secret": "__SECRET__",
     "database": "postgres",
     "port": "__PORT__",
+    "admin__username":"__ADMIN__",
+    "admin__password":"__PASSWORD__",
+    "admin__password__confirm":"__PASSWORD__",
     "trust_proxy": true,
     "isCluster": false,
     "redis": {

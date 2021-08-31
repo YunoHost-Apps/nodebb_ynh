@@ -13,6 +13,7 @@ WorkingDirectory=__FINALPATH__/
 #PIDFile=__FINALPATH__/pidfile
 Environment="__YNH_NODE_LOAD_PATH__"
 ExecStart=__YNH_NODE__ __FINALPATH__/nodebb start
+#loader.js
 Restart=always
 
 StandardOutput=syslog
