@@ -117,6 +117,14 @@ chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
 #=================================================
+# CONFIGURE SERVER.JS	
+#=================================================
+
+ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
+chmod 666 "$final_path/config.json"
+chown $app "$final_path/config.json"
+
+#=================================================
 # CONFIGURE NODEBB
 #=================================================
 
@@ -140,14 +148,6 @@ ynh_script_progression --message="Configuring a systemd service..." --weight=1
 ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/systemd.service"
 
 ynh_add_systemd_config
-
-#=================================================
-# CONFIGURE SERVER.JS	
-#=================================================
-
-ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
-chmod 400 "$final_path/config.json"
-chown $app "$final_path/config.json"
 
 #=================================================
 # START NodeBB IN BACKGROUND
