@@ -2,15 +2,9 @@
     "url": "http://127.0.0.1:__PORT__",
     "secret": "__SECRET__",
     "port": "__PORT__",
-    "admin": {
-    "username": "__ADMIN__"
-    },
-    "admin": {
-    "password": "__PASSWORD__"
-    },
-    "admin": {
-    "email": "admin@__DOMAIN__"
-    },
+    "admin:username": "__ADMIN__",
+    "admin:password": "__PASSWORD__",
+    "admin:password:confirm": "__PASSWORD__",
     "database": "redis",
     "redis": {
         "host": "127.0.0.1",
