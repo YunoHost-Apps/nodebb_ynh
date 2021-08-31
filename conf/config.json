@@ -1,5 +1,5 @@
 {
-    "url": "https://http://127.0.0.1:__PORT__",
+    "url": "http://127.0.0.1:__PORT__",
     "secret": "__SECRET__",
     "port": "__PORT__",
     "database": "redis",
