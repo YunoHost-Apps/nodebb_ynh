@@ -129,7 +129,7 @@ chown $app "$final_path/config.json"
 #=================================================
 
 pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup #-l > $install_log
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup $final_path/config.json #-l > $install_log
 popd
 
 #=================================================
