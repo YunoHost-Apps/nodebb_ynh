@@ -86,10 +86,7 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path"
-	pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb upgrade #-l > $install_log
-	popd
+	ynh_setup_source --dest_dir="$final_path" --keep="$final_path/config.json"
 fi
 
 chmod 750 "$final_path"
@@ -114,20 +111,20 @@ ynh_install_app_dependencies $pkg_dependencies
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 #=================================================
+# UPDATE NODEBB
+#=================================================
+
+pushd $final_path
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb upgrade #-l > $install_log
+popd
+
+#=================================================
 # SETUP SYSTEMD
 #=================================================
 ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
 
 # Create a dedicated systemd config
 ynh_add_systemd_config
-
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-
-ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
-chmod 400 "$final_path/config.json"
-chown $app "$final_path/config.json"
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
