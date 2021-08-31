@@ -17,5 +17,8 @@
         "username": "__DB_NAME__",
         "password": "__DB_PWD__",
         "database": "__DB_NAME__"
+    },
+    "socket.io": {
+        "transports": ["websocket"]
     }
 }
