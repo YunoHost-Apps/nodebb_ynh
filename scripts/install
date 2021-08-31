@@ -127,6 +127,8 @@ ynh_add_config --template="../conf/config.json" --destination="$final_path/confi
 ynh_add_config --template="../conf/.env" --destination="$final_path/config.base.env"
 chmod 666 "$final_path/config.json"
 chown $app "$final_path/config.json"
+chmod 755 "$final_path/config.base.env"
+chown $app "$final_path/config.base.env"
 
 #=================================================
 # CONFIGURE NODEBB
