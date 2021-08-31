@@ -30,7 +30,6 @@ app=$YNH_APP_INSTANCE_NAME
 
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 domain=$(ynh_app_setting_get --app=$app --key=domain)
-db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 
 #=================================================
 # DECLARE DATA AND CONF FILES TO BACKUP
@@ -62,13 +61,6 @@ ynh_backup --src_path="/etc/logrotate.d/$app"
 #=================================================
 
 ynh_backup --src_path="/etc/systemd/system/$app.service"
-
-#=================================================
-# BACKUP THE MYSQL DATABASE
-#=================================================
-ynh_print_info --message="Backing up the MySQL database..."
-
-ynh_psql_dump_db --database="$db_name" > db.sql
 
 #=================================================
 # END OF SCRIPT

@@ -7,12 +7,14 @@ After=system.slice multi-user.target
 Type=forking
 User=__APP__
 Group=__APP__
+
 Environment=NODE_ENV=production
-WorkingDirectory=__FINALPATH__
-PIDFile=__FINALPATH__/pidfile
+WorkingDirectory=__FINALPATH__/
+#PIDFile=__FINALPATH__/pidfile
 Environment="__YNH_NODE_LOAD_PATH__"
 ExecStart=__YNH_NODE__ __FINALPATH__/nodebb start
 Restart=always
+
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=__APP__
