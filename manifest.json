@@ -24,7 +24,7 @@
     "requirements": {
         "yunohost": ">> 4.2.4"
     },
-    "multi_instance": false,
+    "multi_instance": true,
     "services": [
         "nginx"
     ],
@@ -34,6 +34,12 @@
                 "name": "domain",
                 "type": "domain",
                 "example": "example.com"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "example": "/forum",
+                "default": "/forum"
             },
             {
                 "name": "admin",

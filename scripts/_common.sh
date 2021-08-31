@@ -5,7 +5,7 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="redis-server"
+pkg_dependencies="postgresql redis-server"
 
 nodejs_version=14
 

@@ -1,12 +1,21 @@
 {
-    "url": "http://127.0.0.1:__PORT__",
+    "url": "https://__DOMAIN____PATH__",
     "secret": "__SECRET__",
+    "database": "postgres",
     "port": "__PORT__",
-    "database": "redis",
+    "trust_proxy": true,
+    "isCluster": false,
     "redis": {
         "host": "127.0.0.1",
         "port": "6379",
         "password": "",
         "database": "__REDIS_DB__"
+    },
+    "postgres": {
+        "host": "localhost",
+        "port": "5432",
+        "username": "__DB_NAME__",
+        "password": "__DB_PWD__",
+        "database": "__DB_NAME__"
     }
 }
