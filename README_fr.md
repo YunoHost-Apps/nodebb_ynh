@@ -11,7 +11,8 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 ## Vue d'ensemble
 
-Forum écrit en nodejs
+NodeBB is built using the Node.js server-side Javascript platform, delivering unmatched performance.
+Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
 **Version incluse :** 1.18.0~ynh1
 
