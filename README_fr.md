@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Forum écrit en nodejs
 
-**Version incluse :** 1.17.2~ynh1
+**Version incluse :** 1.18.0~ynh1
 
 **Démo :** https://try.nodebb.org
 
