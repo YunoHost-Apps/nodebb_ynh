@@ -2,10 +2,6 @@
     "url": "http://127.0.0.1:__PORT__",
     "secret": "__SECRET__",
     "port": "__PORT__",
-    "admin__username": "__ADMIN__",
-    "admin__password": "__PASSWORD__",
-    "export admin__password__confirm": "__PASSWORD__",
-
     "database": "redis",
     "redis": {
         "host": "127.0.0.1",

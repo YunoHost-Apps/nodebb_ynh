@@ -124,6 +124,7 @@ chown -R $app:www-data "$final_path"
 #=================================================
 
 ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
+ynh_add_config --template="../conf/.env" --destination="$final_path/config.base.env"
 chmod 666 "$final_path/config.json"
 chown $app "$final_path/config.json"
 
@@ -132,6 +133,7 @@ chown $app "$final_path/config.json"
 #=================================================
 
 pushd $final_path
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/config.base.env
 	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup $final_path/config.json #-l > $install_log
 popd
 
