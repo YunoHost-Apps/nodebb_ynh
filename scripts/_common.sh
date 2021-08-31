@@ -9,6 +9,8 @@ pkg_dependencies="postgresql redis-server"
 
 nodejs_version=14
 
+nodebb_version=v1.18.x
+
 #=================================================
 # PERSONAL HELPERS
 #=================================================
