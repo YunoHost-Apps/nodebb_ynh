@@ -2,8 +2,7 @@
     "url": "https://__DOMAIN__",
     "secret": "__SECRET__",
     "port": "__PORT__",
-    "database": "postgres",
-
+    "database": "redis",
     "redis": {
         "host": "127.0.0.1",
         "port": "6379",
