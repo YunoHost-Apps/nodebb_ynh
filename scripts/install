@@ -169,7 +169,7 @@ yunohost service add $app --description="Nodejs Forum" --log="/var/log/$app/$app
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action=restart --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name=$app --action=restart --log_path="systemd"
 
 #=================================================
 # SETUP SSOWAT
@@ -193,15 +193,20 @@ ynh_systemd_action --service_name=nginx --action=reload
 #=================================================
 # SEND A README FOR THE ADMIN
 #=================================================
+ynh_script_progression --message="Sending a readme for the admin..." --weight=1
 
-mail_content=$(cat $install_log | grep '\(Username\|Password\)')*
+message="NodeBB was successfully installed :)
 
-message=" $app was successfully installed :)
 Please open your $app domain: https://$domain$path_url
 
-$mail_content
+Complete the registration process from the setup page displayed.
+Details for MySQL database to be enterted while registration process:
 
-If you are facing any problem or want to improve this app, please open a new issue here: https://github.com/YunoHost-Apps/nodebb_ynh"
+Database login:    $app
+Database name:     $app
+Database password: $db_pwd
+
+If you are facing any problem or want to improve this app, please open a new issue here: https://github.com/YunoHost-Apps/matomo_ynh/issues"
 
 ynh_send_readme_to_admin "$message"
 
