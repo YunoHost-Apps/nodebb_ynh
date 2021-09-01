@@ -126,7 +126,7 @@ chown -R $app:www-data "$final_path"
 #=================================================
 
 pushd $final_path
-	./nodebb setup
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup
 popd
 
 #=================================================
