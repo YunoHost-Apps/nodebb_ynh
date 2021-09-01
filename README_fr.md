@@ -30,8 +30,8 @@ Building on this high performance platform means fast and dependable performance
 
 * Site officiel de l'app : https://nodebb.org
 * Documentation officielle utilisateur : https://yunohost.org/apps
-* Documentation officielle de l'admin : https://docs.nodebb.org/
-* Dépôt de code officiel de l'app : https://github.com/NodeBB/NodeBB/
+* Documentation officielle de l'admin : https://docs.nodebb.org
+* Dépôt de code officiel de l'app : https://github.com/NodeBB/NodeBB
 * Documentation YunoHost pour cette app : https://yunohost.org/app_nodebb
 * Signaler un bug : https://github.com/YunoHost-Apps/nodebb_ynh/issues
 
