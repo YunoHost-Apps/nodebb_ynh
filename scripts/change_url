@@ -35,7 +35,6 @@ db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 db_user=$db_name
 db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 redis_db=$(ynh_app_setting_get --app=$app --key=redis_db)
-secret=$(ynh_app_setting_get --app=$app --key=secret)
 
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
@@ -108,6 +107,9 @@ then
 	ynh_store_file_checksum --file="/etc/nginx/conf.d/$new_domain.d/$app.conf"
 fi
 
+#=================================================
+# CONFIGURE CONFIG.JSON FILE
+#=================================================
 
 domain="$new_domain"
 path="$new_path"
