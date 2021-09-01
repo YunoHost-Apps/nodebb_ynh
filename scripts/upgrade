@@ -37,9 +37,6 @@ upgrade_type=$(ynh_check_app_version_changed)
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
-### If nobody installed your app before 4.1,
-### then you may safely remove these lines
-
 # Cleaning legacy permissions
 if ynh_legacy_permissions_exists; then
 	ynh_legacy_permissions_delete_all
@@ -116,7 +113,7 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 #=================================================
 
 pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb upgrade #-l > $install_log
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb upgrade
 popd
 
 #=================================================
