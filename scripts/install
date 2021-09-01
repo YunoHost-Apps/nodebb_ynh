@@ -124,8 +124,23 @@ chown -R $app:www-data "$final_path"
 # CONFIGURE NODEBB
 #=================================================
 
+setup="{
+        \"url\": \"https://${domain}${path_url}\",
+        \"admin:username\": \"${admin}\",
+        \"admin:password\": \"${password}\",
+        \"admin:password:confirm\": \"${password}\",
+        \"admin:email\": \"admin@${domain}\",
+        \"database\": \"postgres\",
+        \"postgres:host\": \"localhost\",
+        \"postgres:port\": \"5432\",
+        \"postgres:username\": \"$db_name\",
+        \"postgres:password\": \"$db_pwd\",
+        \"postgres:database\": \"$db_name\"
+    }"
+
+
 pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup --setup "${setup}" --series
 popd
 
 #=================================================
