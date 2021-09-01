@@ -83,8 +83,14 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path" --keep="$final_path/config.json"
+	pushd $final_path
+		# Shut down your forum
+		./nodebb stop
+		# Grab the latest and greatest code
+		git fetch    								# Grab the latest code from the NodeBB Repository
+		git reset --hard origin/$nodebb_version		# Replace v1.12.x with the branch name!
+		# Run the NodeBB upgrade script
+		./nodebb upgrade
 fi
 
 chmod 750 "$final_path"
@@ -107,14 +113,6 @@ ynh_script_progression --message="Upgrading dependencies..." --weight=1
 ynh_install_app_dependencies $pkg_dependencies
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
-
-#=================================================
-# UPDATE NODEBB
-#=================================================
-
-pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb upgrade
-popd
 
 #=================================================
 # SETUP SYSTEMD
