@@ -140,7 +140,7 @@ setup="{
 
 
 pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup --setup "${setup}" --series
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}" --series
 popd
 
 #=================================================
