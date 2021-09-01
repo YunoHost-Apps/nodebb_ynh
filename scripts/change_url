@@ -111,12 +111,7 @@ fi
 # CONFIGURE CONFIG.JSON FILE
 #=================================================
 
-domain="$new_domain"
-path="$new_path"
-
-ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
-chmod 666 "$final_path/config.json"
-chown $app "$final_path/config.json"
+ynh_replace_string --match_string="\"url\": \".*\""  --replace_string="\"url\": \"https://${new_domain}${new_path}\"" --target_file="$final_path/config.json"
 
 #=================================================
 # GENERIC FINALISATION
