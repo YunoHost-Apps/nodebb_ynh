@@ -73,15 +73,6 @@ ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 #=================================================
-# CREATE A REDIS DATABASE
-#=================================================
-ynh_script_progression --message="Creating a Redis database..." --weight=5
-
-# Configure redis
-redis_db=$(ynh_redis_get_free_db)
-ynh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
-
-#=================================================
 # CREATE DEDICATED USER
 #=================================================
 ynh_script_progression --message="Configuring system user..." --weight=3
@@ -143,7 +134,7 @@ chown $app "$final_path/config.json"
 #=================================================
 
 pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup #-l > $install_log
+	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup
 popd
 
 #=================================================

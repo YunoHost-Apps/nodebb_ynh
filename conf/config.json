@@ -8,20 +8,11 @@
     "admin__password__confirm":"__PASSWORD__",
     "trust_proxy": true,
     "isCluster": false,
-    "redis": {
-        "host": "127.0.0.1",
-        "port": "6379",
-        "password": "",
-        "database": "__REDIS_DB__"
-    },
     "postgres": {
         "host": "localhost",
         "port": "5432",
         "username": "__DB_NAME__",
         "password": "__DB_PWD__",
         "database": "__DB_NAME__"
-    },
-    "socket.io": {
-        "transports": ["websocket"]
     }
 }
