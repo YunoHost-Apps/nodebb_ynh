@@ -115,7 +115,6 @@ ynh_script_progression --message="Setting up source files..." --weight=2
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
 git clone -b $nodebb_version https://github.com/NodeBB/NodeBB.git "$final_path" --quiet
-ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
@@ -132,6 +131,9 @@ popd
 #=================================================
 # CONFIGURE CONFIG.JSON FILE
 #=================================================
+
+ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
+ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup --schema --build
 
 chmod 666 "$final_path/config.json"
 chown $app "$final_path/config.json"
