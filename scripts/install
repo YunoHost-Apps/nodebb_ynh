@@ -138,20 +138,9 @@ setup="{
         \"postgres:database\": \"$db_name\"
     }"
 
-
 pushd $final_path
 	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}"
 popd
-
-#=================================================
-# CONFIGURE CONFIG.JSON FILE
-#=================================================
-
-# ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
-# ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup --schema --build
-
-# chmod 666 "$final_path/config.json"
-# chown $app "$final_path/config.json"
 
 #=================================================
 # NGINX CONFIGURATION
