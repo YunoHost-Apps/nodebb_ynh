@@ -91,6 +91,7 @@ then
 		git reset --hard origin/$nodebb_version		# Replace v1.12.x with the branch name!
 		# Run the NodeBB upgrade script
 		./nodebb upgrade
+	popd
 fi
 
 chmod 750 "$final_path"
