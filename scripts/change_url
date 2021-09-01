@@ -17,7 +17,7 @@ old_domain=$YNH_APP_OLD_DOMAIN
 old_path=$YNH_APP_OLD_PATH
 
 new_domain=$YNH_APP_NEW_DOMAIN
-new_path="/"
+new_path=$YNH_APP_NEW_PATH
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -28,6 +28,14 @@ ynh_script_progression --message="Loading installation settings..." --weight=1
 
 # Needed for helper "ynh_add_nginx_config"
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+secret=$(ynh_app_setting_get --app=$app --key=secret)
+password=$(ynh_app_setting_get --app=$app --key=password)
+admin=$(ynh_app_setting_get --app=$app --key=admin)
+db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+db_user=$db_name
+db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
+redis_db=$(ynh_app_setting_get --app=$app --key=redis_db)
+secret=$(ynh_app_setting_get --app=$app --key=secret)
 
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
@@ -99,6 +107,14 @@ then
 	# Store file checksum for the new config file location
 	ynh_store_file_checksum --file="/etc/nginx/conf.d/$new_domain.d/$app.conf"
 fi
+
+
+domain="$new_domain"
+path="$new_path"
+
+ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
+chmod 666 "$final_path/config.json"
+chown $app "$final_path/config.json"
 
 #=================================================
 # GENERIC FINALISATION
