@@ -139,7 +139,7 @@ setup="{
     }"
 
 pushd $final_path
-    ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}"
+    ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log
 popd
 
 #=================================================
@@ -164,7 +164,7 @@ ynh_add_systemd_config
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="Nodejs Forum" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Forum software" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START ETHERPAD IN BACKGROUND
