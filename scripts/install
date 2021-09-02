@@ -133,14 +133,12 @@ setup="{
         \"database\": \"postgres\",
         \"postgres:host\": \"localhost\",
         \"postgres:port\": \"5432\",
-        \"postgres:username\": \"$db_name\",
-        \"postgres:password\": \"$db_pwd\",
-        \"postgres:database\": \"$db_name\"
+        \"postgres:username\": \"${db_name}\",
+        \"postgres:password\": \"${db_pwd}\",
+        \"postgres:database\": \"${db_name}\"
     }"
 
-pushd $final_path
-	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}"
-popd
+ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -164,7 +162,7 @@ ynh_add_systemd_config
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="Nodejs Forum" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Forum software" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START ETHERPAD IN BACKGROUND
