@@ -139,7 +139,9 @@ setup="{
         \"postgres:database\": \"$db_name\"
     }"
 
-ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}"
+#ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}"
+
+cd $final_path && ynh_exec_as $app env $ynh_node_load_PATH node $final_path/app --setup "${setup}"  --series
 
 #=================================================
 # NGINX CONFIGURATION
