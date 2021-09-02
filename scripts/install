@@ -139,6 +139,9 @@ popd
 ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
 chmod 400 "$final_path/config.json"
 chown $app:$app "$final_path/config.json"
+pushd $final_path
+    ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb upgrade
+popd
 
 #=================================================
 # NGINX CONFIGURATION
