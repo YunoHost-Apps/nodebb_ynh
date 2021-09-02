@@ -144,7 +144,7 @@ ynh_script_progression --message="Configuring the $app..." --weight=2
 # popd
 
 pushd $final_path
-    ynh_exec_as $app $ynh_node_load_PATH admin__password=$password node app --setup | tee -a $install_log
+    ynh_exec_as $app $ynh_node_load_PATH admin__password=$password ynh_node app --setup | tee -a $install_log
 popd
 
 #=================================================
