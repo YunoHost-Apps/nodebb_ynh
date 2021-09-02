@@ -139,13 +139,13 @@ ynh_script_progression --message="Configuring the $app..." --weight=2
 #         \"postgres:database\": \"$db_name\"
 #     }"
 
+pushd $final_path
+    ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup admin__password=$password | tee -a $install_log
+popd
+
 # pushd $final_path
 #     ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log
 # popd
-
-pushd $final_path
-    ynh_exec_as $app $ynh_node_load_PATH admin__password=$password ynh_node app --setup | tee -a $install_log
-popd
 
 #=================================================
 # NGINX CONFIGURATION
