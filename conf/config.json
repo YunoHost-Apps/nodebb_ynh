@@ -4,10 +4,6 @@
     "database": "postgres",
     "port": "__PORT__",
     "bind_address": "127.0.0.1",
-    "admin:username": "__ADMIN__",
-    "admin:password": "__PASSWORD__",
-    "admin:password:confirm": "__PASSWORD__",
-    "admin:email": "admin@__DOMAIN__",
     "postgres": {
         "host": "localhost",
         "port": "5432",
