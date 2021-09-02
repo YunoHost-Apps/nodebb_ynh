@@ -98,7 +98,7 @@ ynh_psql_setup_db --db_user=$db_name --db_name=$db_name
 
 # Créer le dossier de log
 mkdir -p /var/log/$app
-touch /var/log/$app/nodebb.log
+touch /var/log/$app/$app.log
 install_log=/var/log/$app/installation.log
 touch $install_log
 chown $app -R /var/log/$app
