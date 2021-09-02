@@ -125,27 +125,23 @@ chown -R $app:www-data "$final_path"
 #=================================================
 ynh_script_progression --message="Configuring the $app..." --weight=2
 
-# setup="{
-#         \"url\": \"https://${domain}${path_url}\",
-#         \"admin:username\": \"$admin\",
-#         \"admin:password\": \"$password\",
-#         \"admin:password:confirm\": \"$password\",
-#         \"admin:email\": \"admin@$domain\",
-#         \"database\": \"postgres\",
-#         \"postgres:host\": \"localhost\",
-#         \"postgres:port\": \"5432\",
-#         \"postgres:username\": \"$db_name\",
-#         \"postgres:password\": \"$db_pwd\",
-#         \"postgres:database\": \"$db_name\"
-#     }"
+setup="{
+        \"url\": \"https://${domain}${path_url}\",
+        \"admin:username\": \"$admin\",
+        \"admin:password\": \"$password\",
+        \"admin:password:confirm\": \"$password\",
+        \"admin:email\": \"admin@$domain\",
+        \"database\": \"postgres\",
+        \"postgres:host\": \"localhost\",
+        \"postgres:port\": \"5432\",
+        \"postgres:username\": \"$db_name\",
+        \"postgres:password\": \"$db_pwd\",
+        \"postgres:database\": \"$db_name\"
+    }"
 
 pushd $final_path
-    ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup admin__password=$password | tee -a $install_log
+    ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log
 popd
-
-# pushd $final_path
-#     ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log
-# popd
 
 #=================================================
 # NGINX CONFIGURATION
