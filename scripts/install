@@ -129,7 +129,7 @@ setup="{
         \"admin:username\": \"$admin\",
         \"admin:password\": \"$password\",
         \"admin:password:confirm\": \"$password\",
-        \"admin:email\": \"admin@$domain\",
+        \"admin:email\": \"admin@$domain\"
     }"
 
 pushd $final_path
