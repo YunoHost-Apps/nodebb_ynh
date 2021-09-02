@@ -126,22 +126,19 @@ chown -R $app:www-data "$final_path"
 ynh_script_progression --message="Configuring the $app..." --weight=2
 
 setup="{
-        \"url\": \"https://${domain}${path_url}\",
         \"admin:username\": \"$admin\",
         \"admin:password\": \"$password\",
         \"admin:password:confirm\": \"$password\",
         \"admin:email\": \"admin@$domain\",
-        \"database\": \"postgres\",
-        \"postgres:host\": \"localhost\",
-        \"postgres:port\": \"5432\",
-        \"postgres:username\": \"$db_name\",
-        \"postgres:password\": \"$db_pwd\",
-        \"postgres:database\": \"$db_name\"
     }"
 
 pushd $final_path
     ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log
 popd
+
+ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
+chmod 400 "$final_path/config.json"
+chown $app:$app "$final_path/config.json"
 
 #=================================================
 # NGINX CONFIGURATION
