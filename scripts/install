@@ -139,6 +139,10 @@ setup="{
         \"postgres:database\": \"$db_name\"
     }"
 
+pushd $final_path
+    ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log
+popd
+
 #ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}"
 pushd $final_path
     ynh_exec_as $app env $ynh_node_load_PATH node $final_path/app --setup "${setup}" --series | tee -a $install_log
