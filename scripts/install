@@ -135,7 +135,7 @@ setup="{
     }"
 
 pushd $final_path
-    ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log
+    ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb setup "${setup}" | tee -a $install_log 2>/dev/null 
 popd
 
 chmod 400 "$final_path/config.json"
