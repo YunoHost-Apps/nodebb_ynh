@@ -3,10 +3,7 @@
     "secret": "__SECRET__",
     "database": "postgres",
     "port": "__PORT__",
-    "admin:username": "__ADMIN__",
-    "admin:password": "__PASSWORD__",
-    "admin:password:confirm": "__PASSWORD__",
-    "admin:email": "admin@__DOMAIN__",
+    "bind_address": "127.0.0.1",
     "postgres": {
         "host": "localhost",
         "port": "5432",
