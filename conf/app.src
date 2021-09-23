@@ -1,7 +1,0 @@
-SOURCE_URL=https://github.com/NodeBB/NodeBB/archive/refs/tags/v1.18.0.tar.gz
-SOURCE_SUM=6c5fd823a0bc443ec06ed3799c8c8c904f79ef838f6c933f80466b4da39fec02
-SOURCE_SUM_PRG=sha256sum
-SOURCE_FORMAT=tar.gz
-SOURCE_IN_SUBDIR=true
-SOURCE_FILENAME=
-SOURCE_EXTRACT=true
