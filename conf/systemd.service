@@ -1,5 +1,5 @@
 [Unit]
-Description=NodeBB
+Description=NodeBB: Forum software
 Documentation=https://docs.nodebb.org
 After=system.slice multi-user.target
 
@@ -7,7 +7,6 @@ After=system.slice multi-user.target
 Type=forking
 User=__APP__
 Group=__APP__
-
 Environment=NODE_ENV=production
 WorkingDirectory=__FINALPATH__/
 #PIDFile=__FINALPATH__/pidfile
