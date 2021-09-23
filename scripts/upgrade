@@ -84,8 +84,9 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
 	pushd $final_path
+		ynh_use_nodejs
 		# Shut down your forum
-		ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb stop
+		ynh_exec_as $app env "$ynh_node_load_PATH" $final_path/nodebb stop
 		# Grab the latest and greatest code
 		git fetch    								# Grab the latest code from the NodeBB Repository
 		git reset --hard origin/$nodebb_version		# Replace v1.12.x with the branch name!
