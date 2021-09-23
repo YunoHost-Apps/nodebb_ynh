@@ -91,7 +91,7 @@ then
 		git fetch    								# Grab the latest code from the NodeBB Repository
 		git reset --hard origin/$nodebb_version		# Replace v1.12.x with the branch name!
 		# Run the NodeBB upgrade script
-		ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb upgrade
+		ynh_exec_as $app $ynh_node_load_PATH $final_path/nodebb upgrade 2>/dev/null 
 	popd
 fi
 
