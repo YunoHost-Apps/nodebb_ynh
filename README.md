@@ -24,7 +24,7 @@ Building on this high performance platform means fast and dependable performance
 
 ## Screenshots
 
-![](./doc/screenshots/Ud1LrfI.png)
+![](./doc/screenshots/screenshot.png)
 
 ## Disclaimers / important information
 
