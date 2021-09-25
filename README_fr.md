@@ -20,7 +20,7 @@ Building on this high performance platform means fast and dependable performance
 
 ## Captures d'écran
 
-![](./doc/screenshots/Ud1LrfI.png)
+![](./doc/screenshots/screenshot.png)
 
 ## Avertissements / informations importantes
 
