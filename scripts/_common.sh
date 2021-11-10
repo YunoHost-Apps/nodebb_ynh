@@ -6,7 +6,7 @@
 
 # dependencies used by the app
 pkg_dependencies="postgresql"
-nodejs_version=16
+nodejs_version=14
 nodebb_version=v1.18.x
 
 #=================================================
