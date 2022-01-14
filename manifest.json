@@ -6,14 +6,13 @@
         "en": "Forum software built for the modern web",
         "fr": "Logiciel de forum conçu pour le Web moderne"
     },
-    "version": "1.18.5~ynh1",
+    "version": "1.19.0~ynh1",
     "url": "https://nodebb.org",
     "upstream": {
         "license": "GPL-3.0",
         "website": "https://nodebb.org",
         "demo": "https://try.nodebb.org",
         "admindoc": "https://docs.nodebb.org",
-        "userdoc": "https://yunohost.org/apps",
         "code": "https://github.com/NodeBB/NodeBB"
     },
     "license": "GPL-3.0",
@@ -22,7 +21,7 @@
         "email": "abld@tutanota.com"
     },
     "requirements": {
-        "yunohost": ">> 4.2.4"
+        "yunohost": ">> 4.3.0"
     },
     "multi_instance": true,
     "services": [
