@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 NodeBB is built using the Node.js server-side Javascript platform, delivering unmatched performance.
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
-**Shipped version:** 1.18.5~ynh1
+**Shipped version:** 1.19.0~ynh1
 
 **Demo:** https://try.nodebb.org
 
@@ -33,7 +33,6 @@ Building on this high performance platform means fast and dependable performance
 ## Documentation and resources
 
 * Official app website: https://nodebb.org
-* Official user documentation: https://yunohost.org/apps
 * Official admin documentation: https://docs.nodebb.org
 * Upstream app code repository: https://github.com/NodeBB/NodeBB
 * YunoHost documentation for this app: https://yunohost.org/app_nodebb
