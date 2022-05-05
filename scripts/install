@@ -131,7 +131,7 @@ setup="{
 
 pushd $final_path
 	ynh_use_nodejs
-	ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm install -g npm@8.9.0
+	npm install -g npm@8.9.0
 	ynh_exec_as $app env $ynh_node_load_PATH $ynh_npm install lodash --save
 	ynh_exec_as $app env $ynh_node_load_PATH $final_path/nodebb setup "${setup}" 2>/dev/null 
 popd
