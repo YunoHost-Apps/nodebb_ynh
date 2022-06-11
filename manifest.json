@@ -6,7 +6,7 @@
         "en": "Forum software built for the modern web",
         "fr": "Logiciel de forum conçu pour le Web moderne"
     },
-    "version": "2.1.0~ynh1",
+    "version": "2.1.1~ynh1",
     "url": "https://nodebb.org",
     "upstream": {
         "license": "GPL-3.0",
