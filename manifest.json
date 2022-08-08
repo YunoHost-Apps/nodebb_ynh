@@ -13,7 +13,8 @@
         "website": "https://nodebb.org",
         "demo": "https://try.nodebb.org",
         "admindoc": "https://docs.nodebb.org",
-        "code": "https://github.com/NodeBB/NodeBB"
+        "code": "https://github.com/NodeBB/NodeBB",
+        "cpe": "cpe:2.3:a:nodebb:nodebb"
     },
     "license": "GPL-3.0",
     "maintainer": {
