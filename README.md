@@ -21,6 +21,7 @@ Building on this high performance platform means fast and dependable performance
 **Shipped version:** 2.4.1~ynh1
 
 
+
 **Demo:** https://try.nodebb.org
 
 ## Screenshots
