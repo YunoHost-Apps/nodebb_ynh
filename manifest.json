@@ -6,14 +6,15 @@
         "en": "Forum software built for the modern web",
         "fr": "Logiciel de forum conçu pour le Web moderne"
     },
-    "version": "2.2.5~ynh1",
+    "version": "2.4.1~ynh1",
     "url": "https://nodebb.org",
     "upstream": {
         "license": "GPL-3.0",
         "website": "https://nodebb.org",
         "demo": "https://try.nodebb.org",
         "admindoc": "https://docs.nodebb.org",
-        "code": "https://github.com/NodeBB/NodeBB"
+        "code": "https://github.com/NodeBB/NodeBB",
+        "cpe": "cpe:2.3:a:nodebb:nodebb"
     },
     "license": "GPL-3.0",
     "maintainer": {
