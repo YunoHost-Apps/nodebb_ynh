@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # NodeBB for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/nodebb.svg)](https://dash.yunohost.org/appci/app/nodebb) ![Working status](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/nodebb.svg)](https://dash.yunohost.org/appci/app/nodebb) ![Working status](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
 [![Install NodeBB with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 NodeBB is built using the Node.js server-side Javascript platform, delivering unmatched performance.
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
-**Shipped version:** 2.8.0~ynh1
+**Shipped version:** 2.8.5~ynh1
 
 **Demo:** https://try.nodebb.org
 
