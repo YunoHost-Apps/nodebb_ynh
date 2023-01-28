@@ -5,26 +5,26 @@ It shall NOT be edited by hand.
 
 # NodeBB pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/nodebb.svg)](https://dash.yunohost.org/appci/app/nodebb) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/nodebb.svg)](https://dash.yunohost.org/appci/app/nodebb) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
 [![Installer NodeBB avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer NodeBB rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer NodeBB rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 NodeBB is built using the Node.js server-side Javascript platform, delivering unmatched performance.
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
-**Version incluse :** 2.8.0~ynh1
+**Version incluse :** 2.8.5~ynh1
 
 **Démo :** https://try.nodebb.org
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de NodeBB](./doc/screenshots/screenshot.png)
+![Capture d’écran de NodeBB](./doc/screenshots/screenshot.png)
 
 ## Avertissements / informations importantes
 
@@ -32,9 +32,9 @@ Building on this high performance platform means fast and dependable performance
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://nodebb.org>
-* Documentation officielle de l'admin : <https://docs.nodebb.org>
-* Dépôt de code officiel de l'app : <https://github.com/NodeBB/NodeBB>
+* Site officiel de l’app : <https://nodebb.org>
+* Documentation officielle de l’admin : <https://docs.nodebb.org>
+* Dépôt de code officiel de l’app : <https://github.com/NodeBB/NodeBB>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_nodebb>
 * Signaler un bug : <https://github.com/YunoHost-Apps/nodebb_ynh/issues>
 
@@ -50,4 +50,4 @@ ou
 sudo yunohost app upgrade nodebb -u https://github.com/YunoHost-Apps/nodebb_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
