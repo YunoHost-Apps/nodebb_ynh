@@ -36,6 +36,7 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 ynh_script_progression --message="Setting up source files..." --weight=2
 
 # Download, check integrity, uncompress and patch the source from app.src
+git config --system --add safe.directory $install_dir
 git clone -b $nodebb_version https://github.com/NodeBB/NodeBB.git "$install_dir" --quiet
 
 chmod -R o-rwx "$install_dir"
