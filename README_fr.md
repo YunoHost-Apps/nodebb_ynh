@@ -27,10 +27,6 @@ Building on this high performance platform means fast and dependable performance
 
 ![Capture d’écran de NodeBB](./doc/screenshots/screenshot.png)
 
-## Avertissements / informations importantes
-
-
-
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://nodebb.org>
