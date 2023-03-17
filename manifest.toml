@@ -1,0 +1,61 @@
+packaging_format = 2
+
+id = "nodebb"
+name = "NodeBB"
+description.en = "Forum software built for the modern web"
+description.fr = "Logiciel de forum conçu pour le Web moderne"
+
+version = "2.8.5~ynh1"
+
+maintainers = ["frju365"]
+
+[upstream]
+license = "GPL-3.0"
+website = "https://nodebb.org"
+demo = "https://try.nodebb.org"
+admindoc = "https://docs.nodebb.org"
+code = "https://github.com/NodeBB/NodeBB"
+
+[integration]
+yunohost = ">= 11.1.15"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/forum"
+
+    [install.admin]
+    type = "user"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.password]
+    type = "password"
+
+[resources]
+    [resources.ports]
+    
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = "postgresql"
+
+    [resources.database]
+    type = "postgresql"
