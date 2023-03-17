@@ -45,6 +45,7 @@ ram.runtime = "50M"
     type = "password"
 
 [resources]
+    [resources.ports]
     
     [resources.system_user]
 
