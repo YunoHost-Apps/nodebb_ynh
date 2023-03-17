@@ -45,7 +45,6 @@ ram.runtime = "50M"
     type = "password"
 
 [resources]
-    [resources.apt]
     
     [resources.system_user]
 
