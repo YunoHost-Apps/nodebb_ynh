@@ -5,7 +5,7 @@
 #=================================================
 
 nodejs_version=16
-nodebb_version=v2.x
+nodebb_version=v3.x
 
 #=================================================
 # PERSONAL HELPERS
