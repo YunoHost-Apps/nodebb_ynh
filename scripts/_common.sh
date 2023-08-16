@@ -4,7 +4,7 @@
 # COMMON VARIABLES
 #=================================================
 
-nodejs_version=18
+nodejs_version=20
 nodebb_version=v3.x
 
 #=================================================
