@@ -5,7 +5,7 @@ name = "NodeBB"
 description.en = "Forum software built for the modern web"
 description.fr = "Logiciel de forum conçu pour le Web moderne"
 
-version = "3.3.6~ynh1"
+version = "3.3.8~ynh1"
 
 maintainers = ["frju365"]
 
