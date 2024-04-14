@@ -12,12 +12,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# CHECK VERSION
-#=================================================
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
 # STANDARD UPGRADE STEPS
 #=================================================
 # STOP SYSTEMD SERVICE
@@ -29,23 +23,19 @@ ynh_systemd_action --service_name=$app --action="stop" --log_path="systemd"
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression --message="Upgrading source files..." --weight=1
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Upgrading source files..." --weight=1
-
-	pushd $install_dir
-		ynh_use_nodejs
-		# Shut down your forum
-		git config --system --add safe.directory $install_dir
-		ynh_exec_as $app env "$ynh_node_load_PATH" $install_dir/nodebb stop
-		# Grab the latest and greatest code
-		git fetch    								# Grab the latest code from the NodeBB Repository
-		git reset --hard origin/$nodebb_version		# Replace v1.12.x with the branch name!
-		# Run the NodeBB upgrade script
-		ynh_exec_as $app $ynh_node_load_PATH $install_dir/nodebb upgrade 2>/dev/null 
-	popd
-fi
+pushd $install_dir
+	ynh_use_nodejs
+	# Shut down your forum
+	git config --system --add safe.directory $install_dir
+	ynh_exec_as $app env "$ynh_node_load_PATH" $install_dir/nodebb stop
+	# Grab the latest and greatest code
+	git fetch    								# Grab the latest code from the NodeBB Repository
+	git reset --hard origin/$nodebb_version		# Replace v1.12.x with the branch name!
+	# Run the NodeBB upgrade script
+	ynh_exec_as $app $ynh_node_load_PATH $install_dir/nodebb upgrade 2>/dev/null 
+popd
 
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
@@ -58,26 +48,11 @@ ynh_script_progression --message="Upgrading NGINX web server configuration..." -
 # Create a dedicated NGINX config
 ynh_add_nginx_config
 
-#=================================================
-# UPGRADE DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Upgrading dependencies..." --weight=1
-
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
-
 # Create a dedicated systemd config
 ynh_add_systemd_config
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
 yunohost service add $app --description="Forum software" --log="/var/log/$app/$app.log"
 
