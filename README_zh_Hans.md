@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 NodeBB
+# YunoHost 上的 NodeBB
 
 [![集成程度](https://dash.yunohost.org/integration/nodebb.svg)](https://dash.yunohost.org/appci/app/nodebb) ![工作状态](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
 
