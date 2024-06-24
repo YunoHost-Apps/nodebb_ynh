@@ -62,7 +62,7 @@ setup="{
 
 pushd $install_dir
 	npm install npm@latest --location=global
-	ynh_exec_as_app install lodash #--save
+	ynh_exec_as_app install lodash --save
 	ynh_exec_as_app $install_dir/nodebb setup "${setup}" 2>/dev/null
 
 popd
