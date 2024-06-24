@@ -61,7 +61,6 @@ setup="{
 	}"
 
 pushd $install_dir
-
 	npm install npm@latest --location=global
 	ynh_exec_as_app node_load_PATH npm install lodash --save
 	ynh_exec_as_app node_load_PATH $install_dir/nodebb setup "${setup}" 2>/dev/null
@@ -76,10 +75,8 @@ chown $app:$app "$install_dir/config.json"
 #=================================================
 ynh_script_progression "Configuring $app's systemd service..."
 
-# Create a dedicated systemd config
 ynh_config_add_systemd
 
-# Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
 
 yunohost service add $app --description="Forum software" --log="/var/log/$app/$app.log"
