@@ -21,7 +21,6 @@ ynh_app_setting_set --key=$secret --value="$secret"
 #=================================================
 ynh_script_progression "Installing dependencies..."
 
-# Install Nodejs
 ynh_nodejs_install
 
 #=================================================
@@ -41,7 +40,6 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 ynh_script_progression "Configuring NGINX web server..."
 
-# Create a dedicated NGINX config
 ynh_config_add_nginx
 
 #=================================================
@@ -86,7 +84,6 @@ yunohost service add $app --description="Forum software" --log="/var/log/$app/$a
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
 ynh_systemctl --service=$app --action=restart --log_path="systemd"
 
 #=================================================

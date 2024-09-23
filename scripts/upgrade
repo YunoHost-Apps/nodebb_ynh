@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#https://docs.nodebb.org/configuring/upgrade/
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
