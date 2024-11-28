@@ -5,7 +5,9 @@
 
 # NodeBB для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/nodebb.svg)](https://ci-apps.yunohost.org/ci/apps/nodebb/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+![Состояние работы](https://apps.yunohost.org/badge/state/nodebb)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/nodebb)
 
 [![Установите NodeBB с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 

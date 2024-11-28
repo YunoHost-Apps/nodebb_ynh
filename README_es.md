@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # NodeBB para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/nodebb.svg)](https://ci-apps.yunohost.org/ci/apps/nodebb/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+![Estado funcional](https://apps.yunohost.org/badge/state/nodebb)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/nodebb)
 
 [![Instalar NodeBB con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 

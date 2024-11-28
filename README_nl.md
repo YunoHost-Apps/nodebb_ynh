@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # NodeBB voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/nodebb.svg)](https://ci-apps.yunohost.org/ci/apps/nodebb/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/nodebb)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/nodebb)
 
 [![NodeBB met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 

@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # NodeBB YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/nodebb.svg)](https://ci-apps.yunohost.org/ci/apps/nodebb/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/nodebb)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/nodebb)
 
 [![Instalatu NodeBB YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 

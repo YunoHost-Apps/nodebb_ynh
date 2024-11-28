@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # NodeBB untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/nodebb.svg)](https://ci-apps.yunohost.org/ci/apps/nodebb/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+![Status kerja](https://apps.yunohost.org/badge/state/nodebb)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/nodebb)
 
 [![Pasang NodeBB dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 
