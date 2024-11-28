@@ -30,11 +30,12 @@ pushd $install_dir
 	git fetch    								# Grab the latest code from the NodeBB Repository
 	git reset --hard origin/$nodebb_version		# Replace v1.12.x with the branch name!
 	# Run the NodeBB upgrade script
-	ynh_exec_as_app node_load_PATH $install_dir/nodebb upgrade 2>/dev/null
+	ynh_exec_as_app $install_dir/nodebb upgrade 2>/dev/null
 popd
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
+
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
