@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # NodeBB YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/nodebb.svg)](https://dash.yunohost.org/appci/app/nodebb) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/nodebb)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/nodebb)
 
 [![Instalatu NodeBB YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 
@@ -19,7 +21,7 @@ EZ editatu eskuz.
 NodeBB is built using the Node.js server-side Javascript platform, delivering unmatched performance.
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
-**Paketatutako bertsioa:** 3.7.3~ynh1
+**Paketatutako bertsioa:** 3.11.0~ynh1
 
 **Demoa:** <https://try.nodebb.org>
 

@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # NodeBB para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/nodebb.svg)](https://dash.yunohost.org/appci/app/nodebb) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/nodebb.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/nodebb.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+![Estado funcional](https://apps.yunohost.org/badge/state/nodebb)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/nodebb)
 
 [![Instalar NodeBB con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=nodebb)
 
@@ -19,7 +21,7 @@ No se debe editar a mano.
 NodeBB is built using the Node.js server-side Javascript platform, delivering unmatched performance.
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
-**Versión actual:** 3.7.3~ynh1
+**Versión actual:** 3.11.0~ynh1
 
 **Demo:** <https://try.nodebb.org>
 
@@ -37,7 +39,7 @@ Building on this high performance platform means fast and dependable performance
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/nodebb_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/nodebb_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
