@@ -49,8 +49,13 @@ ram.runtime = "750M"
 
 [resources]
 
-    [resources.ports]
-    
+    [resources.sources]
+
+    [resources.sources.main]
+    url = "https://github.com/NodeBB/NodeBB/archive/refs/tags/v4.0.0.tar.gz"
+    sha256 = "a4e68c9cca20b39cce069a9c1ebeb7fb708330a4bb14fdb62ce3bdaba09925ee"
+    autoupdate.strategy = "latest_github_tag"
+
     [resources.system_user]
 
     [resources.install_dir]
@@ -58,8 +63,10 @@ ram.runtime = "750M"
     [resources.permissions]
     main.url = "/"
 
+    [resources.ports]
+
     [resources.apt]
-    packages = "postgresql"
+    packages = "postgresql, redis-server"
 
     [resources.database]
     type = "postgresql"
