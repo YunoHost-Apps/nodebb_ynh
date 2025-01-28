@@ -12,7 +12,6 @@ WorkingDirectory=__INSTALL_DIR__/
 #PIDFile=__INSTALL_DIR__/pidfile
 Environment="PATH=__PATH_WITH_NODEJS__"
 ExecStart=__NODEJS_DIR__/node __INSTALL_DIR__/nodebb start
-#loader.js
 Restart=always
 
 StandardOutput=syslog
