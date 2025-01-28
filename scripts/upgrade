@@ -22,7 +22,7 @@ ynh_nodejs_install
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --keep="config.json" --full_replace
+ynh_setup_source --dest_dir="$install_dir" --keep="config.json" #--full_replace
 
 ynh_hide_warnings ynh_exec_as_app $install_dir/nodebb upgrade
 
