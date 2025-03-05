@@ -52,8 +52,8 @@ ram.runtime = "750M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/NodeBB/NodeBB/archive/refs/tags/v4.0.0.tar.gz"
-    sha256 = "a4e68c9cca20b39cce069a9c1ebeb7fb708330a4bb14fdb62ce3bdaba09925ee"
+    url = "https://github.com/NodeBB/NodeBB/archive/refs/tags/v4.1.0.tar.gz"
+    sha256 = "456f5bbe147ed561c696851870bb93c2407d991a9acfc05a0289128327a03dcb"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
