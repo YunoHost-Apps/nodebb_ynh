@@ -21,7 +21,7 @@ Hij mag NIET handmatig aangepast worden.
 NodeBB is built using the Node.js server-side Javascript platform, delivering unmatched performance.
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
-**Geleverde versie:** 4.0.0~ynh2
+**Geleverde versie:** 4.0.2~ynh1
 
 **Demo:** <https://try.nodebb.org>
 
