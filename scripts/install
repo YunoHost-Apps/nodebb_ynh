@@ -24,11 +24,7 @@ ynh_nodejs_install
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-git config --system --add safe.directory $install_dir
-git clone -b $nodebb_version https://github.com/NodeBB/NodeBB.git "$install_dir" --quiet
-
-chmod -R o-rwx "$install_dir"
-chown -R $app:$app "$install_dir"
+ynh_setup_source --dest_dir="$install_dir"
 
 #=================================================
 # CONFIGURE NODEBB
@@ -45,15 +41,11 @@ setup="{
 	}"
 
 pushd $install_dir
-
-	npm install npm@latest --location=global
-	ynh_exec_as_app npm install lodash --save
-	ynh_exec_as_app $install_dir/nodebb setup "${setup}" 2>/dev/null
-
+	ynh_hide_warnings npm install npm@latest --location=global
+	ynh_hide_warnings ynh_exec_as_app npm install lodash --save
+	ynh_hide_warnings ynh_exec_as_app $install_dir/nodebb setup "${setup}"
 popd
 
-chmod 400 "$install_dir/config.json"
-chown $app:$app "$install_dir/config.json"
 
 #=================================================
 # SETUP SYSTEMD

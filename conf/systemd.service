@@ -1,5 +1,5 @@
 [Unit]
-Description=NodeBB: Forum software
+Description=NodeBB: forum software
 Documentation=https://docs.nodebb.org
 After=system.slice multi-user.target
 
