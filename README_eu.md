@@ -22,7 +22,7 @@ NodeBB is built using the Node.js server-side Javascript platform, delivering un
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
 
-**Paketatutako bertsioa:** 4.1.0~ynh2
+**Paketatutako bertsioa:** 4.2.0~ynh1
 
 **Demoa:** <https://try.nodebb.org>
 
@@ -42,7 +42,7 @@ Building on this high performance platform means fast and dependable performance
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/nodebb_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/nodebb_ynh/tree/testing --debug

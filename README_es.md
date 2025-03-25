@@ -3,7 +3,7 @@ Este archivo README esta generado automaticamente<https://github.com/YunoHost/ap
 No se debe editar a mano.
 -->
 
-# NodeBB para Yunohost
+# NodeBB para YunoHost
 
 [![Nivel de integración](https://apps.yunohost.org/badge/integration/nodebb)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
 ![Estado funcional](https://apps.yunohost.org/badge/state/nodebb)
@@ -22,7 +22,7 @@ NodeBB is built using the Node.js server-side Javascript platform, delivering un
 Building on this high performance platform means fast and dependable performance that will support even the biggest and most active community.
 
 
-**Versión actual:** 4.1.0~ynh2
+**Versión actual:** 4.2.0~ynh1
 
 **Demo:** <https://try.nodebb.org>
 
