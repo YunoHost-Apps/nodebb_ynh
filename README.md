@@ -12,12 +12,16 @@ Forum software built for the modern web
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://nodebb.org)
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://try.nodebb.org)
-[![Version: 4.4.4~ynh1](https://img.shields.io/badge/Version-4.4.4~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
+[![Version: 4.4.6~ynh1](https://img.shields.io/badge/Version-4.4.6~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/nodebb/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/nodebb"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
 <a href="https://github.com/YunoHost-Apps/nodebb_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
+
+
+## Screenshots
+![Screenshot of NodeBB](./doc/screenshots/screenshot.png)
 
 ## 📦 Developer info
 
