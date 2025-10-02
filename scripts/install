@@ -28,13 +28,6 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:$app "$install_dir"
 
 #=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-#REMOVEME? ynh_nodejs_install
-
-#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
