@@ -30,7 +30,7 @@ chown -R $app:$app "$install_dir"
 #=================================================
 ynh_script_progression "Installing dependencies..."
 
-ynh_nodejs_install
+#REMOVEME? ynh_nodejs_install
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION
