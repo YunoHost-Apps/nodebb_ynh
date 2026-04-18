@@ -19,7 +19,7 @@ admindoc = "https://docs.nodebb.org"
 code = "https://github.com/NodeBB/NodeBB"
 
 [integration]
-yunohost = ">= 12.1.38"
+yunohost = ">= 12.1.39"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -74,4 +74,4 @@ ram.runtime = "750M"
     type = "postgresql"
 
     [resources.nodejs]
-    version = "22"
+    version = "24"
