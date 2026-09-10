@@ -7,7 +7,7 @@ name = "NodeBB"
 description.en = "Forum software built for the modern web"
 description.fr = "Logiciel de forum conçu pour le Web moderne"
 
-version = "4.15.1~ynh1"
+version = "4.15.2~ynh1"
 
 maintainers = []
 
@@ -54,8 +54,8 @@ ram.runtime = "750M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/NodeBB/NodeBB/archive/refs/tags/v4.15.1.tar.gz"
-    sha256 = "ed50ccaa038d5fd5afd322bd1f40a41edfe8fe892bb386802cec6cb9945f3927"
+    url = "https://github.com/NodeBB/NodeBB/archive/refs/tags/v4.15.2.tar.gz"
+    sha256 = "a504f498fa5e7c5edf9a4c18479c0063403e4398f746d2337bb94b6887d672c5"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
